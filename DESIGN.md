@@ -185,11 +185,11 @@ A near-monochrome desk with one committed color and one refusal color; the yello
 
 ### Neutral
 - **Paper** (`paper`): page ground and the sheet's own ground. Also the light text on ink buttons.
-- **Paper 2** (`paper-2`): the preview strip, portrait placeholder, inline code in the form status, and the scrollbar track. The only tonal step; it is not a card fill.
+- **Paper 2** (`paper-2`): the preview strip, inline code in the form status, and the scrollbar track. The only tonal step; it is not a card fill.
 - **Ink** (`ink`): headlines, body, the default button fill, the strong ledger rule, the focus outline, the caret.
 - **Ink 2** (`ink-2`): secondary prose (ledes, tier and price descriptions, FAQ answers, sheet head), nav links at rest.
 - **Ink 3** (`ink-3`): tertiary text (sheet field names, help text, hero note, footer legal), input borders, link underline color, scrollbar thumb.
-- **Rule** (`rule`): every hairline divider, the sheet border, the ZIP chip border, the dashed evidence rule.
+- **Rule** (`rule`): every hairline divider, the sheet border, the dashed evidence rule.
 - **Rule Strong** (`rule-strong`): the ink-weight rule that opens a ledger (fields, tiers, prices, checklist, promise, form, howto, first FAQ, footer) and the sheet head's bottom rule.
 
 ### Dark scheme
@@ -217,7 +217,7 @@ The dark desk swaps every neutral and shifts the two colors slightly warmer and 
 - **Statement** (500, `clamp(1.375rem, 2.4vw, 1.875rem)`, 1.3, -0.012em): the problem statement at 30ch. The checklist question uses the same weight and tracking at `clamp(1.25rem, 2vw, 1.5rem)`.
 - **Lede** (400, `clamp(1.125rem, 1.4vw, 1.3125rem)`, 1.45): the hero and closing subtext in Ink 2 at 36ch.
 - **Body** (400, 1.0625rem, 1.55): prose at 64ch, `text-wrap: pretty`; secondary paragraphs in Ink 2 at 40 to 60ch. Small body is 0.9375rem (hero note, delivery, footer); help and legal text 0.875rem.
-- **Manuscript** (Courier Prime 400, 0.9375rem, 1.5): the sheet body, tier examples, ZIP chips, contact line, textarea, and inline `.mono` values inside prose.
+- **Manuscript** (Courier Prime 400, 0.9375rem, 1.5): the sheet body, tier examples, textarea, and inline `.mono` values inside prose.
 - **Label** (Courier Prime 400, 0.8125rem, 1.45): sheet head and foot, sheet field names, citations, margin notes, wordmark descriptor, preview strip; tags at 0.75rem. Never uppercase, never letter-spaced.
 - **Figure** (Courier Prime 700, `clamp(1.75rem, 3vw, 2.25rem)`, 1, -0.02em): prices. Tier letters use the same setting at `clamp(2rem, 4vw, 2.75rem)`.
 - **Source mark** (Courier Prime, 0.72em superscript, graphite): the citation number after a quoted sentence, the way a checker cites.
