@@ -474,13 +474,9 @@ body[data-preview="true"] .synthetic-label { display: inline-block; }
 
 /* Refused record: the pencil goes through the whole field block, not one line. */
 .refused .sheet dl { position: relative; color: var(--ink-2); }
-.refused .sheet dl::after {
-  content: ""; position: absolute; left: -0.5rem; right: -0.5rem; top: 50%; height: 2px;
-  background: var(--pencil); transform: rotate(-4deg); transform-origin: left center; pointer-events: none;
-}
+.refused .sheet dl::after { content: none; }
 @media (prefers-reduced-motion: no-preference) {
-  html.js .refused.sweep .sheet dl::after { transform: scaleX(0) rotate(-4deg); transition: transform var(--t-slow) var(--ease-out) 200ms; }
-  html.js .refused.sweep.in-view .sheet dl::after { transform: scaleX(1) rotate(-4deg); }
+  html.js .refused.sweep .sheet dl::after { content: none; }
 }
 .section-note { margin-top: 1.5rem; max-width: 56ch; color: var(--ink-2); text-wrap: pretty; }
 .howto-wrap { margin-top: 1rem; }
@@ -620,3 +616,66 @@ html.js .in-view svg.draw, html.js .typed svg.draw, html.js .is-sent svg.draw { 
 .copy-btn { margin-top: 0.75rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 0.8rem; border: 1px solid var(--ink); border-radius: 2px; background: transparent; color: var(--ink); font-size: 0.9375rem; font-weight: 500; }
 .copy-btn:hover { background: var(--paper-2); }
 .copy-btn .i { width: 1em; height: 1em; }
+
+/* ======================================================================
+   Pass 4: the pencil. Cross-outs draw as strokes, stamps land, blanks
+   are ruled in, underlines are drawn. Same grammar, same one-shot rule.
+   ====================================================================== */
+
+/* Drawn X: two strokes, the second after the first. */
+html.js svg.draw-x { stroke-dasharray: 100; stroke-dashoffset: 100; }
+html.js .in-view svg.draw-x, html.js .typed svg.draw-x { stroke-dashoffset: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js svg.draw-x { transition: stroke-dashoffset 560ms cubic-bezier(0.3, 0, 0.2, 1); transition-delay: calc(var(--i, 0) * 180ms + 160ms); }
+}
+@media (prefers-reduced-motion: reduce) { svg.draw-x { stroke-dashoffset: 0; } }
+.margin-note svg.draw-x, .promise svg.draw-x { width: 1.05rem; height: 1.05rem; }
+.tier-letter svg.draw-x { width: 0.85em; height: 0.85em; }
+
+/* Pencil line through the refused record: a slight curve, drawn left to right, then the stamp lands. */
+.refused .sheet .struck { position: relative; }
+.pencil-strike { position: absolute; left: -0.6rem; right: -0.6rem; top: 0; height: 100%; width: calc(100% + 1.2rem); color: var(--pencil); pointer-events: none; opacity: 0.92; }
+.pencil-strike line { stroke-dasharray: 100; stroke-dashoffset: 0; }
+html.js .refused.sweep .pencil-strike line { stroke-dashoffset: 100; }
+html.js .refused.sweep.in-view .pencil-strike line { stroke-dashoffset: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .refused.sweep .pencil-strike line { transition: stroke-dashoffset 720ms cubic-bezier(0.3, 0, 0.2, 1) 240ms; }
+  /* The stamp: lands after the line, from slightly large to true size. */
+  html.js .sweep .tag-kill { opacity: 0; transform: scale(1.18); }
+  html.js .sweep.in-view .tag-kill { opacity: 1; transform: none; transition: opacity 220ms var(--ease-out), transform 260ms cubic-bezier(0.2, 0.9, 0.3, 1.2); transition-delay: 1000ms; }
+  html.js .tiers.sweep.in-view .tag-kill { transition-delay: 1150ms; }
+  /* Inline kill: a pencil stroke with a soft end, not a laser. */
+  .kill::after { border-radius: 1px; height: 2.2px; }
+}
+@media (prefers-reduced-motion: reduce) { .pencil-strike line { stroke-dashoffset: 0; } .tag-kill { opacity: 1; transform: none; } }
+
+/* Blank fields in the cheap row: the dashed rule is drawn in, then reads as missing. */
+.sheet dd.blank { border-bottom: none; background-image: repeating-linear-gradient(90deg, var(--pencil) 0 4px, transparent 4px 8px); background-repeat: no-repeat; background-position: left bottom; background-size: 100% 1px; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .sweep dd.blank { background-size: 0% 1px; transition: background-size 640ms var(--ease-out) 320ms; }
+  html.js .sweep.in-view dd.blank { background-size: 100% 1px; }
+}
+
+/* Checklist boxes press as their tick lands. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .reveal .checklist .box { transform: scale(0.9); transition: transform 320ms cubic-bezier(0.2, 0.9, 0.3, 1.15); transition-delay: calc(var(--i, 0) * 180ms + 120ms); }
+  html.js .reveal.in-view .checklist .box { transform: none; }
+}
+
+/* Source marks appear once the highlight has landed. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-typewriter] .src, html.js [data-typewriter] .cite { opacity: 0; transition: opacity 400ms var(--ease-out); }
+  html.js [data-typewriter].typed .src { opacity: 1; transition-delay: 1150ms; }
+  html.js [data-typewriter].typed .cite { opacity: 1; transition-delay: 1300ms; }
+}
+@media (prefers-reduced-motion: reduce) { [data-typewriter] .src, [data-typewriter] .cite { opacity: 1; } }
+
+/* Nav links: the underline is drawn from the left. */
+.nav-links a { border-bottom: none; background-image: linear-gradient(var(--ink), var(--ink)); background-repeat: no-repeat; background-size: 0% 1px; background-position: left calc(100% - 0.1em); transition: background-size 260ms var(--ease-out), color var(--t-fast) var(--ease-out); }
+.nav-links a:hover, .nav-links a:focus-visible { background-size: 100% 1px; }
+
+/* Form: the label wakes when its field has focus; the caret in the FAQ nudges on hover. */
+.field label { color: var(--ink-2); transition: color var(--t-fast) var(--ease-out); }
+.field:focus-within label { color: var(--ink); }
+.faq summary:hover .i { transform: translateY(2px); }
+.faq details[open] summary:hover .i { transform: rotate(180deg) translateY(2px); }
