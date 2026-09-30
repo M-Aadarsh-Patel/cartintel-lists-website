@@ -1,3 +1,8 @@
-# Claude Code: machine-local settings and Impeccable runtime state
+# Claude Code: machine-local settings
 .claude/settings.local.json
-.impeccable/
+# Impeccable: runtime and review captures stay local; the surface brief and config are committed
+.impeccable/review/
+.impeccable/build/
+.impeccable/mocks/
+.impeccable/live/
+.impeccable/config.local.json
