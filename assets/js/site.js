@@ -20,11 +20,11 @@
   } else {
     var ioReveal = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); ioReveal.unobserve(e.target); } });
-    }, { rootMargin: "0px 0px 25% 0px", threshold: 0 });
+    }, { rootMargin: "0px 0px -4% 0px", threshold: 0 });
     pendingReveal.forEach(function (el) { ioReveal.observe(el); });
     var ioStroke = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); ioStroke.unobserve(e.target); } });
-    }, { rootMargin: "-12% 0px -12% 0px", threshold: 0 });
+    }, { rootMargin: "-8% 0px -40% 0px", threshold: 0 });
     pendingStroke.forEach(function (el) { ioStroke.observe(el); });
     var ticking = false;
     function sweepPending() {
@@ -33,7 +33,7 @@
       if (pendingReveal.length) {
         pendingReveal = pendingReveal.filter(function (el) {
           if (el.classList.contains("in-view")) return false;
-          if (el.getBoundingClientRect().top < vh * 1.25) { show(el); ioReveal.unobserve(el); return false; }
+          if (el.getBoundingClientRect().top < vh * 0.96) { show(el); ioReveal.unobserve(el); return false; }
           return true;
         });
       }
@@ -41,7 +41,7 @@
         pendingStroke = pendingStroke.filter(function (el) {
           if (el.classList.contains("in-view")) return false;
           var r = el.getBoundingClientRect();
-          var inBand = r.top < vh * 0.88 && r.bottom > vh * 0.12;
+          var inBand = r.top < vh * 0.6 && r.bottom > vh * 0.08;
           var scrolledPast = r.bottom < 0;
           if (inBand || scrolledPast) { show(el); ioStroke.unobserve(el); return false; }
           return true;
@@ -116,7 +116,7 @@
           sheet.removeAttribute("aria-busy"); sheet.classList.add("typed");
         }
         var started = false;
-        var MS_PER_CHAR = 2.4, FIELD_GAP = 20;
+        var MS_PER_CHAR = 4.8, FIELD_GAP = 40;
         function typeField(i) {
           if (i >= plan.length) { finishAll(); return; }
           var p = plan[i], len = p.text.length, t0 = null;
