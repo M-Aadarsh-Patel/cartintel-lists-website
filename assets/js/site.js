@@ -4,49 +4,38 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var hasIO = "IntersectionObserver" in window;
 
-  /* ---- Reveal on entry: content is shown a quarter viewport ahead of the fold so nothing is
-     ever blank behind a heading. Strokes (.sweep: highlights, strikes, ticks, stamps) are
-     different: they are the page's authored moments and fire only once their own element is
-     inside the viewport, otherwise they play out of sight and the reader never sees them.
-     Both have a passive, rAF-throttled fallback for frames where observers misfire. ---- */
-  var pendingReveal = Array.prototype.slice.call(document.querySelectorAll(".reveal, .section > .wrap > h2, .statement"));
-  var pendingStroke = Array.prototype.slice.call(document.querySelectorAll(".sweep"));
+  /* ---- One rule for every animation: an element waits until its own top reaches the 50% line
+     of the viewport, where the eye is, then plays once. Rows are observed individually, so a
+     ledger does not fire as a block. A passive, frame-throttled fallback covers frames where
+     observers misfire, and anything already scrolled past completes instantly. ---- */
+  var ROW = ".tier, .checklist li, .promise li, .price, .fields > div, .ask-list li, .moves > div, .howto li, .faq details, .compare-item";
+  var rows = Array.prototype.slice.call(document.querySelectorAll(ROW));
+  rows.forEach(function (el) { el.classList.add("row-anim"); });
+  var pending = Array.prototype.slice.call(document.querySelectorAll(".reveal, .section > .wrap > h2, .statement, .sweep, .row-anim"));
+  pending = pending.filter(function (el, i) { return pending.indexOf(el) === i; });
   function show(el) {
     el.classList.add("in-view");
     el.querySelectorAll(".pencil-strike path").forEach(function (p) { p.style.strokeDashoffset = "0"; });
   }
+  var LINE = 0.5;
   if (reduce || !hasIO) {
-    pendingReveal.forEach(show); pendingStroke.forEach(show); pendingReveal = []; pendingStroke = [];
+    pending.forEach(show); pending = [];
   } else {
-    var ioReveal = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); ioReveal.unobserve(e.target); } });
-    }, { rootMargin: "0px 0px -4% 0px", threshold: 0 });
-    pendingReveal.forEach(function (el) { ioReveal.observe(el); });
-    var ioStroke = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); ioStroke.unobserve(e.target); } });
-    }, { rootMargin: "-8% 0px -40% 0px", threshold: 0 });
-    pendingStroke.forEach(function (el) { ioStroke.observe(el); });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -" + Math.round(LINE * 100) + "% 0px", threshold: 0 });
+    pending.forEach(function (el) { io.observe(el); });
     var ticking = false;
     function sweepPending() {
       ticking = false;
+      if (!pending.length) return;
       var vh = window.innerHeight;
-      if (pendingReveal.length) {
-        pendingReveal = pendingReveal.filter(function (el) {
-          if (el.classList.contains("in-view")) return false;
-          if (el.getBoundingClientRect().top < vh * 0.96) { show(el); ioReveal.unobserve(el); return false; }
-          return true;
-        });
-      }
-      if (pendingStroke.length) {
-        pendingStroke = pendingStroke.filter(function (el) {
-          if (el.classList.contains("in-view")) return false;
-          var r = el.getBoundingClientRect();
-          var inBand = r.top < vh * 0.6 && r.bottom > vh * 0.08;
-          var scrolledPast = r.bottom < 0;
-          if (inBand || scrolledPast) { show(el); ioStroke.unobserve(el); return false; }
-          return true;
-        });
-      }
+      pending = pending.filter(function (el) {
+        if (el.classList.contains("in-view")) return false;
+        var r = el.getBoundingClientRect();
+        if (r.top < vh * LINE || r.bottom < 0) { show(el); io.unobserve(el); return false; }
+        return true;
+      });
     }
     function queueSweep() { if (!ticking) { ticking = true; window.requestAnimationFrame(sweepPending); } }
     window.addEventListener("scroll", queueSweep, { passive: true });
@@ -132,7 +121,7 @@
         }
         var startIO = new IntersectionObserver(function (entries) {
           if (entries[0].isIntersecting && !started) { started = true; startIO.disconnect(); sheet.setAttribute("aria-busy", "true"); setTimeout(function () { typeField(0); }, 150); }
-        }, { threshold: 0.35 });
+        }, { rootMargin: "0px 0px -50% 0px", threshold: 0 });
         startIO.observe(sheet);
         /* If the reader never looks at it, finish anyway so nothing stays hidden. */
         setTimeout(function () { if (!started) { started = true; startIO.disconnect(); finishAll(); } }, 6000);

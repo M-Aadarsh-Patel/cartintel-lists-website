@@ -63,6 +63,7 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --t-fast: 180ms;
   --t-slow: 900ms;
+  --t-hi: 1600ms;
 
   --shadow-sheet: 0 1px 0 rgb(22 23 26 / 0.08), 0 8px 18px -12px rgb(22 23 26 / 0.28);
 }
@@ -177,7 +178,7 @@ h3 { font-size: 1.25rem; letter-spacing: -0.01em; line-height: 1.3; }
   -webkit-box-decoration-break: clone; box-decoration-break: clone;
 }
 @media (prefers-reduced-motion: no-preference) {
-  html.js .sweep .hi { background-size: 0% 100%; transition: background-size var(--t-slow) var(--ease-out) 120ms; }
+  html.js .sweep .hi { background-size: 0% 100%; transition: background-size var(--t-hi) var(--ease-out) 120ms; }
   html.js .sweep.in-view .hi { background-size: 100% 100%; }
 }
 
@@ -442,7 +443,7 @@ body[data-preview="true"] .synthetic-label { display: inline-block; }
 
 /* ---------- Reveal ---------- */
 @media (prefers-reduced-motion: no-preference) {
-  html.js .reveal { opacity: 0; transform: translateY(12px); transition: opacity 480ms var(--ease-out), transform 480ms var(--ease-out); }
+  html.js .reveal { opacity: 0; transform: translateY(10px); transition: opacity 320ms var(--ease-out), transform 320ms var(--ease-out); }
   html.js .reveal.in-view { opacity: 1; transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -505,9 +506,9 @@ body[data-preview="true"] .synthetic-label { display: inline-block; }
   html.js [data-typewriter] .evidence, html.js [data-typewriter] .sheet-foot { opacity: 0; transition: opacity 500ms var(--ease-out); }
   html.js [data-typewriter].typed .evidence, html.js [data-typewriter].typed .sheet-foot { opacity: 1; }
   /* The sweep is keyed to the end of typing, so it is seen. */
-  html.js [data-typewriter] .hi { background-size: 0% 100%; transition: background-size 700ms var(--ease-out) 160ms; }
+  html.js [data-typewriter] .hi { background-size: 0% 100%; transition: background-size var(--t-hi) var(--ease-out) 160ms; }
   html.js [data-typewriter].typed .hi { background-size: 100% 100%; }
-  html.js [data-typewriter] .margin-note { opacity: 0; transform: translateX(-6px); transition: opacity 400ms var(--ease-out) 600ms, transform 400ms var(--ease-out) 600ms; }
+  html.js [data-typewriter] .margin-note { opacity: 0; transform: translateX(-6px); transition: opacity 400ms var(--ease-out) 1300ms, transform 400ms var(--ease-out) 1300ms; }
   html.js [data-typewriter].typed .margin-note { opacity: 1; transform: none; }
 }
 
@@ -516,7 +517,7 @@ html.js svg.draw { stroke-dasharray: 26; stroke-dashoffset: 26; }
 html.js .sweep.in-view svg.draw, html.js .typed svg.draw, html.js .is-sent svg.draw { stroke-dashoffset: 0; }
 @media (prefers-reduced-motion: no-preference) {
   html.js svg.draw { transition: stroke-dashoffset 480ms var(--ease-out); transition-delay: 160ms; }
-  [data-typewriter] .margin-note svg.draw { transition-delay: 800ms; }
+  [data-typewriter] .margin-note svg.draw { transition-delay: 1500ms; }
 }
 @media (prefers-reduced-motion: reduce) { svg.draw { stroke-dashoffset: 0; } }
 .margin-note svg.draw, .promise svg.draw, .ask-list svg.draw { width: 1.05rem; height: 1.05rem; stroke-width: 2.25; }
@@ -531,14 +532,11 @@ html.js .sweep.in-view svg.draw, html.js .typed svg.draw, html.js .is-sent svg.d
 .fields > div:nth-child(6), .faq details:nth-child(6) { --i: 5; }
 .faq details:nth-child(n+7) { --i: 5; }
 @media (prefers-reduced-motion: no-preference) {
-  html.js .reveal .tier, html.js .reveal .checklist li, html.js .reveal .promise li, html.js .reveal .price, html.js .reveal .fields > div, html.js .reveal.fields > div, html.js .reveal .ask-list li, html.js .reveal .moves > div, html.js .reveal .howto li, html.js .reveal details {
-    opacity: 0; transform: translateY(8px);
-    transition: opacity 420ms var(--ease-out), transform 420ms var(--ease-out);
-    transition-delay: calc(var(--i, 0) * 45ms + 40ms);
-  }
-  html.js .reveal.in-view .tier, html.js .reveal.in-view .checklist li, html.js .reveal.in-view .promise li, html.js .reveal.in-view .price, html.js .reveal.in-view .fields > div, html.js .reveal.fields.in-view > div, html.js .reveal.in-view .ask-list li, html.js .reveal.in-view .moves > div, html.js .reveal.in-view .howto li, html.js .reveal.in-view details { opacity: 1; transform: none; }
+  /* Rows animate on their own crossing of the line; no list-index stagger, the scroll provides it. */
+  html.js .row-anim { opacity: 0; transform: translateY(10px); transition: opacity 320ms var(--ease-out), transform 320ms var(--ease-out); }
+  html.js .row-anim.in-view { opacity: 1; transform: none; }
   /* Headings come into focus rather than sliding. Blur is bounded to the heading box. */
-  html.js .section > .wrap > h2, html.js .statement { opacity: 0; transform: translateY(12px); transition: opacity 480ms var(--ease-out), transform 480ms var(--ease-out); }
+  html.js .section > .wrap > h2, html.js .statement { opacity: 0; transform: translateY(10px); transition: opacity 320ms var(--ease-out), transform 320ms var(--ease-out); }
   html.js .section > .wrap > h2.in-view, html.js .statement.in-view, html.js .in-view .statement { opacity: 1; transform: none; }
 }
 
@@ -670,8 +668,8 @@ html.js .sweep.in-view svg.draw-x, html.js .typed svg.draw-x { stroke-dashoffset
 /* Source marks appear once the highlight has landed. */
 @media (prefers-reduced-motion: no-preference) {
   html.js [data-typewriter] .src, html.js [data-typewriter] .cite { opacity: 0; transition: opacity 400ms var(--ease-out); }
-  html.js [data-typewriter].typed .src { opacity: 1; transition-delay: 800ms; }
-  html.js [data-typewriter].typed .cite { opacity: 1; transition-delay: 950ms; }
+  html.js [data-typewriter].typed .src { opacity: 1; transition-delay: 1500ms; }
+  html.js [data-typewriter].typed .cite { opacity: 1; transition-delay: 1650ms; }
 }
 @media (prefers-reduced-motion: reduce) { [data-typewriter] .src, [data-typewriter] .cite { opacity: 1; } }
 
