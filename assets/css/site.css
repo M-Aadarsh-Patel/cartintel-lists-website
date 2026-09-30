@@ -442,7 +442,7 @@ body[data-preview="true"] .synthetic-label { display: inline-block; }
 
 /* ---------- Reveal ---------- */
 @media (prefers-reduced-motion: no-preference) {
-  html.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
+  html.js .reveal { opacity: 0; transform: translateY(12px); transition: opacity 480ms var(--ease-out), transform 480ms var(--ease-out); }
   html.js .reveal.in-view { opacity: 1; transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -517,9 +517,9 @@ body[data-preview="true"] .synthetic-label { display: inline-block; }
 
 /* Drawn check marks: stroke-dasharray is inherited, so the <use>d path draws itself. */
 html.js svg.draw { stroke-dasharray: 26; stroke-dashoffset: 26; }
-.in-view svg.draw, .typed svg.draw, .is-sent svg.draw { stroke-dashoffset: 0; }
+html.js .in-view svg.draw, html.js .typed svg.draw, html.js .is-sent svg.draw { stroke-dashoffset: 0; }
 @media (prefers-reduced-motion: no-preference) {
-  html.js svg.draw { transition: stroke-dashoffset 520ms var(--ease-out); transition-delay: calc(var(--i, 0) * 260ms + 220ms); }
+  html.js svg.draw { transition: stroke-dashoffset 480ms var(--ease-out); transition-delay: calc(var(--i, 0) * 180ms + 160ms); }
   [data-typewriter] .margin-note svg.draw { transition-delay: 1150ms; }
 }
 @media (prefers-reduced-motion: reduce) { svg.draw { stroke-dashoffset: 0; } }
@@ -536,13 +536,13 @@ html.js svg.draw { stroke-dasharray: 26; stroke-dashoffset: 26; }
 .faq details:nth-child(n+7) { --i: 5; }
 @media (prefers-reduced-motion: no-preference) {
   html.js .reveal .tier, html.js .reveal .checklist li, html.js .reveal .promise li, html.js .reveal .price, html.js .reveal .fields > div, html.js .reveal.fields > div, html.js .reveal .ask-list li, html.js .reveal .moves > div, html.js .reveal .howto li, html.js .reveal details {
-    opacity: 0; transform: translateY(10px);
-    transition: opacity 620ms var(--ease-out), transform 620ms var(--ease-out);
-    transition-delay: calc(var(--i, 0) * 70ms + 80ms);
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 420ms var(--ease-out), transform 420ms var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 45ms + 40ms);
   }
-  .reveal.in-view .tier, .reveal.in-view .checklist li, .reveal.in-view .promise li, .reveal.in-view .price, .reveal.in-view .fields > div, .reveal.fields.in-view > div, .reveal.in-view .ask-list li, .reveal.in-view .moves > div, .reveal.in-view .howto li, .reveal.in-view details { opacity: 1; transform: none; }
+  html.js .reveal.in-view .tier, html.js .reveal.in-view .checklist li, html.js .reveal.in-view .promise li, html.js .reveal.in-view .price, html.js .reveal.in-view .fields > div, html.js .reveal.fields.in-view > div, html.js .reveal.in-view .ask-list li, html.js .reveal.in-view .moves > div, html.js .reveal.in-view .howto li, html.js .reveal.in-view details { opacity: 1; transform: none; }
   /* Headings come into focus rather than sliding. Blur is bounded to the heading box. */
-  html.js .section > .wrap > h2, html.js .statement { opacity: 0; transform: translateY(14px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
+  html.js .section > .wrap > h2, html.js .statement { opacity: 0; transform: translateY(12px); transition: opacity 480ms var(--ease-out), transform 480ms var(--ease-out); }
   html.js .section > .wrap > h2.in-view, html.js .statement.in-view, html.js .in-view .statement { opacity: 1; transform: none; }
 }
 

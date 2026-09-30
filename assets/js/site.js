@@ -4,16 +4,40 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var hasIO = "IntersectionObserver" in window;
 
-  /* ---- Reveal on entry: sections, ledgers, headings. One-shot. ---- */
-  var targets = document.querySelectorAll(".reveal, .sweep, .section > .wrap > h2, .statement");
+  /* ---- Reveal on entry: sections, ledgers, headings. One-shot.
+     Primary: an IntersectionObserver that fires a quarter viewport ahead of the fold.
+     Fallback: a passive, rAF-throttled check of the still-pending elements, because
+     observers inside embedded frames and fast flick-scrolling on phones can both
+     leave content hidden. Anything at or above the fold is shown; nothing is ever
+     left blank behind a heading. ---- */
+  var pending = Array.prototype.slice.call(document.querySelectorAll(".reveal, .sweep, .section > .wrap > h2, .statement"));
   function show(el) { el.classList.add("in-view"); }
   if (reduce || !hasIO) {
-    targets.forEach(show);
+    pending.forEach(show); pending = [];
   } else {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
-    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.1 });
-    targets.forEach(function (el) { io.observe(el); });
+    }, { rootMargin: "0px 0px 25% 0px", threshold: 0 });
+    pending.forEach(function (el) { io.observe(el); });
+    var ticking = false;
+    function sweepPending() {
+      ticking = false;
+      if (!pending.length) return;
+      var limit = window.innerHeight * 1.25;
+      pending = pending.filter(function (el) {
+        if (el.classList.contains("in-view")) return false;
+        var r = el.getBoundingClientRect();
+        if (r.top < limit) { show(el); io.unobserve(el); return false; } /* in view, ahead of view, or already scrolled past */
+        return true;
+      });
+    }
+    function queueSweep() { if (!ticking) { ticking = true; window.requestAnimationFrame(sweepPending); } }
+    window.addEventListener("scroll", queueSweep, { passive: true });
+    window.addEventListener("resize", queueSweep, { passive: true });
+    window.addEventListener("pageshow", queueSweep);
+    window.addEventListener("hashchange", function () { setTimeout(queueSweep, 50); });
+    queueSweep();
+    setTimeout(queueSweep, 400);
   }
 
   /* ---- Nav condenses after the page scrolls past a sentinel. No scroll listener. ---- */
