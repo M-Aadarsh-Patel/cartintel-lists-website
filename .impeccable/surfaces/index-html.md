@@ -9,9 +9,9 @@ related_targets: ["privacy.html","terms.html"]
 
 Scope: the single landing page plus its two legal companions (privacy.html, terms.html) which inherit its world. Visitor mode: Persuade.
 
-Audience and job: a solo agency owner who got a cold email, checking whether the sender is real and the data is better than cheap lists, deciding alone and fast. Action: request a free 10-record sample for their ZIPs (name, agency, email, ZIPs). Proof: one worked masked record with live evidence, one example per email tier, one rejected record with its reason, the Miami ZIP list, the seller's real name and contact. Constraints: no invented numbers, no testimonials, no competitor names, no volume claims, no "exclusive", tier mix never hidden, one CTA intent with one label everywhere.
+Audience and job: a solo agency owner who got a cold email, checking whether the sender is real and the data is better than cheap lists, deciding alone and fast. Action: request a free 10-record sample for their ZIPs (name, agency, email, ZIPs). Proof: one worked masked record with live evidence, one example per email tier, one rejected record with its reason, the seller's real name and contact. Constraints: no invented numbers, no testimonials, no competitor names, no volume claims, no "exclusive", tier mix never hidden, one CTA intent with one label everywhere.
 
-Unresolved decisions (owner): brand name and domain, postal address, tier C counting, tier B default, tier mix numbers, wrong-row definition, freshness days, delivery format and turnaround, Skydo flow, removal address, exact ZIP list, real masked records and portrait photo. Working assumptions are used and marked in source with data-decision attributes.
+Unresolved decisions (owner): brand name and domain, postal address, tier C counting, tier B default, tier mix numbers, wrong-row definition, freshness days, delivery format and turnaround, Skydo flow, removal address, exact ZIP list (kept off the page), real masked records. Working assumptions are used and marked in source with data-decision attributes.
 
 ## Direction contract
 

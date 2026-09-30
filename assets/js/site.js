@@ -27,41 +27,50 @@
     }, { threshold: 0 }).observe(sentinel);
   }
 
-  /* ---- Typewriter: the hero record is typed in front of the reader, once. ---- */
+  /* ---- Typewriter: the hero record is typed in front of the reader, once.
+     The real text never leaves the accessibility tree: it is visually hidden while an
+     aria-hidden twin is typed, then shown again. ---- */
   var sheet = document.querySelector("[data-typewriter]");
   if (sheet) {
     if (reduce || !hasIO) {
       sheet.classList.add("typed");
     } else {
-      var fields = Array.prototype.slice.call(sheet.querySelectorAll("dl dd"));
-      var plan = fields.map(function (dd) {
-        var nodes = Array.prototype.slice.call(dd.childNodes);
-        var text = dd.textContent;
-        dd.style.minHeight = dd.offsetHeight + "px"; /* reserve the final height so nothing jumps */
-        return { dd: dd, nodes: nodes, text: text };
+      var ready = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+      ready.then(function () {
+        var fields = Array.prototype.slice.call(sheet.querySelectorAll("dl dd"));
+        var plan = fields.map(function (dd) {
+          var src = document.createElement("span"); src.className = "dd-src";
+          while (dd.firstChild) src.appendChild(dd.firstChild);
+          dd.appendChild(src);
+          dd.style.minHeight = dd.offsetHeight + "px"; /* measured with the real fonts, so nothing jumps */
+          var twin = document.createElement("span"); twin.className = "dd-type"; twin.setAttribute("aria-hidden", "true");
+          src.classList.add("visually-hidden"); dd.appendChild(twin);
+          return { src: src, twin: twin, text: src.textContent };
+        });
+        function finishAll() {
+          plan.forEach(function (p) { p.twin.remove(); p.src.classList.remove("visually-hidden"); });
+          sheet.removeAttribute("aria-busy"); sheet.classList.add("typed");
+        }
+        var started = false;
+        function typeField(i) {
+          if (i >= plan.length) { finishAll(); return; }
+          var p = plan[i], n = 0, len = p.text.length;
+          p.twin.classList.add("typing");
+          (function tick() {
+            n = Math.min(len, n + 1);
+            p.twin.textContent = p.text.slice(0, n);
+            if (n < len) { setTimeout(tick, 14); return; }
+            p.twin.remove(); p.src.classList.remove("visually-hidden");
+            setTimeout(function () { typeField(i + 1); }, 90);
+          })();
+        }
+        var startIO = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting && !started) { started = true; startIO.disconnect(); sheet.setAttribute("aria-busy", "true"); setTimeout(function () { typeField(0); }, 700); }
+        }, { threshold: 0.35 });
+        startIO.observe(sheet);
+        /* If the reader never looks at it, finish anyway so nothing stays hidden. */
+        setTimeout(function () { if (!started) { started = true; startIO.disconnect(); finishAll(); } }, 6000);
       });
-      plan.forEach(function (p) { p.dd.textContent = ""; });
-      var started = false;
-      function typeField(i) {
-        if (i >= plan.length) { plan.forEach(function (p) { p.dd.classList.remove("typing"); }); sheet.classList.add("typed"); return; }
-        var p = plan[i], n = 0, len = p.text.length;
-        p.dd.classList.add("typing");
-        (function tick() {
-          n = Math.min(len, n + 1);
-          p.dd.textContent = p.text.slice(0, n);
-          if (n < len) { setTimeout(tick, 14); return; }
-          /* Restore the original nodes (tags, highlighted spans) once the text is complete. */
-          p.dd.textContent = ""; p.nodes.forEach(function (node) { p.dd.appendChild(node); });
-          p.dd.classList.remove("typing");
-          setTimeout(function () { typeField(i + 1); }, 90);
-        })();
-      }
-      var startIO = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting && !started) { started = true; startIO.disconnect(); setTimeout(function () { typeField(0); }, 700); }
-      }, { threshold: 0.35 });
-      startIO.observe(sheet);
-      /* If the reader is not looking at it within a few seconds, finish it anyway so nothing is ever hidden. */
-      setTimeout(function () { if (!started) { started = true; startIO.disconnect(); plan.forEach(function (p) { p.dd.textContent = ""; p.nodes.forEach(function (node) { p.dd.appendChild(node); }); }); sheet.classList.add("typed"); } }, 6000);
     }
   }
 
