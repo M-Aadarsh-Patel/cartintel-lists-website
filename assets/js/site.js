@@ -49,6 +49,12 @@
     new IntersectionObserver(function (entries) {
       nav.classList.toggle("scrolled", !entries[0].isIntersecting);
     }, { threshold: 0 }).observe(sentinel);
+    var heroCta = document.querySelector(".hero .btn-primary");
+    if (heroCta) {
+      new IntersectionObserver(function (entries) {
+        nav.classList.toggle("past-hero", !entries[0].isIntersecting && entries[0].boundingClientRect.top < 0);
+      }, { threshold: 0 }).observe(heroCta);
+    }
   }
 
   /* ---- Typewriter: the hero record is typed in front of the reader, once.
@@ -83,13 +89,13 @@
           (function tick() {
             n = Math.min(len, n + 1);
             p.twin.textContent = p.text.slice(0, n);
-            if (n < len) { setTimeout(tick, 14); return; }
+            if (n < len) { setTimeout(tick, 6); return; }
             p.twin.remove(); p.src.classList.remove("visually-hidden");
-            setTimeout(function () { typeField(i + 1); }, 90);
+            setTimeout(function () { typeField(i + 1); }, 45);
           })();
         }
         var startIO = new IntersectionObserver(function (entries) {
-          if (entries[0].isIntersecting && !started) { started = true; startIO.disconnect(); sheet.setAttribute("aria-busy", "true"); setTimeout(function () { typeField(0); }, 700); }
+          if (entries[0].isIntersecting && !started) { started = true; startIO.disconnect(); sheet.setAttribute("aria-busy", "true"); setTimeout(function () { typeField(0); }, 350); }
         }, { threshold: 0.35 });
         startIO.observe(sheet);
         /* If the reader never looks at it, finish anyway so nothing stays hidden. */
@@ -109,6 +115,10 @@
     wrapOf(input).classList.toggle("invalid", bad);
     input.setAttribute("aria-invalid", bad ? "true" : "false");
     if (bad) input.setAttribute("aria-describedby", input.id + "-err"); else input.removeAttribute("aria-describedby");
+  }
+  function fallbackCopy(text, done) {
+    var ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "absolute"; ta.style.left = "-9999px";
+    document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); done(); } catch (e) {} document.body.removeChild(ta);
   }
   function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
   var inputs = ["f-name", "f-agency", "f-email", "f-zips"].map(field);
@@ -132,8 +142,14 @@
     var href = "mailto:" + TO + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
     var btn = form.querySelector("button[type=submit]");
     btn.classList.add("is-sent"); btn.querySelector(".btn-label").textContent = "Opening your mail app";
-    status.innerHTML = "<b>Your mail app should be opening.</b> If nothing happened, send those four things to <code>" + TO + "</code> and I'll reply within two business days.";
+    status.innerHTML = "<b>Your mail app should be opening.</b> If nothing happened, send those four things to <code>" + TO + "</code> and I'll reply within two business days. <button type=\"button\" class=\"copy-btn\" id=\"copy-request\">Copy the request text</button>";
     status.classList.add("show");
+    var copyBtn = document.getElementById("copy-request");
+    copyBtn.addEventListener("click", function () {
+      var text = "To: " + TO + "\nSubject: " + subject + "\n\n" + body;
+      var done = function () { copyBtn.textContent = "Copied"; setTimeout(function () { copyBtn.textContent = "Copy the request text"; }, 2500); };
+      if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, function () { fallbackCopy(text, done); }); } else { fallbackCopy(text, done); }
+    });
     window.location.href = href;
     setTimeout(function () { btn.classList.remove("is-sent"); btn.querySelector(".btn-label").textContent = "Request a free sample"; }, 4000);
   });

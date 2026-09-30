@@ -585,3 +585,38 @@ html.js .in-view svg.draw, html.js .typed svg.draw, html.js .is-sent svg.draw { 
 
 /* Typewriter: the real text stays in the accessibility tree; typing happens in an aria-hidden twin. */
 [data-typewriter] .dd-src.visually-hidden { position: absolute; }
+
+/* ---------- Pass 3: comparison, refused mirror, nav state, hierarchy, mobile ledger ---------- */
+.compare { margin-top: clamp(2.5rem, 5vw, 4rem); display: grid; gap: 2rem; position: relative; }
+@media (min-width: 900px) { .compare { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+.compare-item { margin: 0; }
+.compare-label { font-family: var(--mono); font-size: 0.8125rem; color: var(--ink-2); margin-bottom: 0.75rem; }
+.sheet.sheet-sm { padding: 1rem 1.1rem; font-size: 0.875rem; }
+.sheet.sheet-sm dl { margin-top: 0; row-gap: 0.45rem; }
+.sheet dd.blank { border-bottom: 1px dashed var(--pencil); min-height: 1.2em; }
+.compare .margin-note { margin-top: 0.85rem; }
+.compare-note { position: absolute; right: 0; top: -1.6rem; margin: 0; }
+.refused-grid { align-items: start; }
+.howto-col h3 { font-size: 1.3125rem; }
+
+/* Nav button: outline while the hero's own button is on screen, highlighter once it has scrolled away. */
+.btn-nav { background: transparent; color: var(--ink); border-color: var(--ink); background-image: linear-gradient(var(--hi), var(--hi)); background-repeat: no-repeat; background-size: 0% 100%; background-position: left center; transition: background-size 320ms var(--ease-out), color 200ms var(--ease-out), border-color 200ms var(--ease-out), padding 260ms var(--ease-out), transform var(--t-fast) var(--ease-out); }
+.btn-nav:hover, .btn-nav:focus-visible { background-size: 100% 100%; color: var(--hi-ink); border-color: var(--hi); }
+.nav.past-hero .btn-nav { background-size: 100% 100%; color: var(--hi-ink); border-color: var(--hi); }
+.nav.past-hero .btn-nav:hover, .nav.past-hero .btn-nav:focus-visible { background-image: linear-gradient(var(--ink), var(--ink)); color: var(--paper); border-color: var(--ink); }
+@media (prefers-reduced-motion: reduce) { .btn-nav { background-size: 100% 100%; color: var(--hi-ink); border-color: var(--hi); } }
+
+/* Row hierarchy: a clearer step between a row's title and its body. */
+.tier h3, .price h3, .moves h3 { font-size: 1.3125rem; }
+.promise li b, .howto li b { font-size: 1.0625rem; }
+
+/* Mobile ledger: the tier letter sits above its text instead of eating a column. */
+@media (max-width: 599px) {
+  .tier { grid-template-columns: 1fr; gap: 0.5rem; }
+  .tier-letter { font-size: 1.75rem; justify-self: start; }
+  .tier .example { grid-column: 1; }
+  .sheet-head { font-size: 0.75rem; }
+}
+.copy-btn { margin-top: 0.75rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 0.8rem; border: 1px solid var(--ink); border-radius: 2px; background: transparent; color: var(--ink); font-size: 0.9375rem; font-weight: 500; }
+.copy-btn:hover { background: var(--paper-2); }
+.copy-btn .i { width: 1em; height: 1em; }
