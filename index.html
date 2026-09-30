@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -36,7 +36,7 @@
     zips         The ZIP list is a working Miami-Dade list to confirm.
 -->
 <body data-preview="true">
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
   <symbol id="i-check" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></symbol>
   <symbol id="i-x" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></symbol>
   <symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
@@ -115,7 +115,7 @@
 <!-- 2. The problem -->
 <section class="section" id="problem">
   <div class="wrap reveal">
-    <p class="statement">Cheap lists give you rows. They don't tell you which rows are right.</p>
+    <p class="statement">A cheap list gives you a thousand rows and no way to know which ones are right.</p>
     <div class="prose">
       <p>Owner emails for local businesses are cheap and plentiful. The cheap sources are weak on small-business owners, and none of them say which rows they got right. So sends go to the wrong person or a dead address, and you can't tell the good rows from the bad ones until the campaign is over.</p>
       <p>I sell the opposite: fewer rows, each one checked by a person, each one carrying the evidence so you can check it too.</p>
@@ -135,14 +135,14 @@
       <div><dt>Tier</dt><dd>What kind of email it is: <span class="mono">A</span>, <span class="mono">B</span> or <span class="mono">C</span>. Defined below.</dd></div>
       <div><dt>Evidence</dt><dd>The link to the source and the exact sentence that shows this person owns the business.</dd></div>
     </dl>
-    <p class="muted" style="margin-top:1.5rem;max-width:56ch">Every field above is a column in the file you receive, so you can sort, filter and spot-check without opening a browser.</p>
+    <p class="section-note">Every field above is a column in the file you receive, so you can sort, filter and spot-check without opening a browser.</p>
   </div>
 </section>
 
 <!-- 4. The email tiers -->
 <section class="section" id="tiers">
   <div class="wrap">
-    <h2>Every email carries a label. Three are sold, one never is.</h2>
+    <h2>Every email is labeled, so you know what you are writing to</h2>
     <div class="tiers reveal">
       <div class="tier">
         <span class="tier-letter hi">A</span>
@@ -169,15 +169,15 @@
         <div class="example"><span class="todo" data-decision="records" title="Illustrative">info@gl&#8226;&#8226;&#8226;skin.com</span> <span class="faint">owner: Da&#8226;&#8226;&#8226;&#8226; Pe&#8226;&#8226;&#8226;, per Sunbiz filing</span></div>
       </div>
       <div class="tier">
-        <span class="tier-letter killed" aria-label="Never sold"><svg class="i" style="width:0.85em;height:0.85em" aria-hidden="true"><use href="#i-x"/></svg></span>
+        <span class="tier-letter killed" role="img" aria-label="Never sold"><svg class="i i-sm" aria-hidden="true"><use href="#i-x"/></svg></span>
         <div>
           <h3>Never sold</h3>
-          <p>Catch-all domains, where any address is accepted and verification proves nothing. And any business where the owner couldn't be identified. These are dropped, not discounted.</p>
+          <p>Catch-all domains, where any address is accepted and verification proves nothing. And any business where the owner couldn't be identified. I drop them from the order rather than sell them cheaper.</p>
         </div>
         <div class="example"><span class="kill">anything@catch-all-domain.com</span> <span class="tag tag-kill">not sold</span></div>
       </div>
     </div>
-    <p class="muted" style="margin-top:1.5rem;max-width:60ch">Your free sample carries the same labels, so you see the tier mix for your territory before you pay for anything.</p>
+    <p class="section-note">Your free sample carries the same labels, so you see the tier mix for your territory before you pay for anything.</p>
   </div>
 </section>
 
@@ -225,7 +225,7 @@
             <dt>Business</dt><dd><span class="todo" data-decision="records" title="Illustrative">Ra&#8226;&#8226;&#8226;&#8226;&#8226; Med Spa Brickell</span></dd>
             <dt>Location</dt><dd>Miami, FL 33131</dd>
             <dt>Owner</dt><dd>Candidate: Ni&#8226;&#8226;&#8226;&#8226; Sa&#8226;&#8226;&#8226;&#8226;</dd>
-            <dt>Email</dt><dd><span class="kill">n&#8226;&#8226;&#8226;&#8226;&#8226;@ra&#8226;&#8226;&#8226;&#8226;&#8226;medspa.com</span></dd>
+            <dt>Email</dt><dd>n&#8226;&#8226;&#8226;&#8226;&#8226;@ra&#8226;&#8226;&#8226;&#8226;&#8226;medspa.com</dd>
             <dt>Tier</dt><dd><span class="tag tag-kill">not sold</span></dd>
           </dl>
           <div class="evidence">
@@ -244,12 +244,12 @@
       </figure>
       <div class="reveal">
         <h3>Check any row yourself, in under a minute</h3>
-        <ol class="howto" style="margin-top:1rem">
+        <ol class="howto howto-wrap">
           <li><div><b>Open the source link.</b><span>It's in the file, one per record.</span></div></li>
           <li><div><b>Find the quoted sentence.</b><span>The evidence column is the exact text. Search the page for it.</span></div></li>
           <li><div><b>Match the name to the email.</b><span>For Tier A, the address sits beside the name. For B and C, the label tells you how it was made.</span></div></li>
         </ol>
-        <p class="muted" style="margin-top:1.5rem;max-width:40ch">If a row fails your check, that is a wrong row, and the guarantee below applies.</p>
+        <p class="section-note">If a row fails your check, that is a wrong row, and the guarantee below applies.</p>
       </div>
     </div>
   </div>
@@ -258,13 +258,13 @@
 <!-- 7. Offer and pricing -->
 <section class="section" id="pricing">
   <div class="wrap">
-    <h2>Three orders. One price each.</h2>
+    <h2>What I sell, and what it costs</h2>
     <div class="prices reveal">
       <div class="price">
         <h3>Sample</h3>
         <span class="count">10 records</span>
         <span class="amount free">Free</span>
-        <p class="what">Ten checked records for the ZIPs you sell into, with every field and every source. No card, no call.</p>
+        <p class="what">Ten checked records for the ZIPs you sell into, with every field and every source. I don't ask for a card or a call.</p>
       </div>
       <div class="price">
         <h3>Introductory</h3>
@@ -413,8 +413,8 @@
 <!-- Close -->
 <section class="section close" id="close">
   <div class="wrap reveal">
-    <h2>Ten checked records for your ZIPs. Free.</h2>
-    <p class="lede">See the evidence before you spend anything. If it isn't better than what you have, you've lost ten minutes.</p>
+    <h2>Ask me for ten checked records for your ZIPs.</h2>
+    <p class="lede">It costs nothing, and you get to read the evidence before you decide. If the rows aren't better than what you have, you've lost ten minutes.</p>
     <a class="btn btn-primary btn-lg" href="#sample">Request a free sample <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
   </div>
 </section>
