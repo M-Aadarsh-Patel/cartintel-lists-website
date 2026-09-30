@@ -23,7 +23,10 @@
     var w = document.createElement("span"); w.className = "tick"; svg.parentNode.insertBefore(w, svg); w.appendChild(svg);
   });
   var LINE = 0.5;
-  if (reduce || !hasIO) {
+  /* Embedded in a frame that is sized to the whole document (some app viewers do this), the page
+     cannot scroll on its own and no viewport line exists. Show everything rather than hide it. */
+  var cannotScroll = document.documentElement.scrollHeight <= window.innerHeight + 2 && document.documentElement.scrollHeight > 1500;
+  if (reduce || !hasIO || cannotScroll) {
     pending.forEach(show); pending = [];
   } else {
     var io = new IntersectionObserver(function (entries) {
