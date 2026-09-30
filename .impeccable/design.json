@@ -4,51 +4,369 @@
   "title": "Design System: CartIntel",
   "extensions": {
     "colorMeta": {
-      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#fbfbf9", "cssVar": "--paper", "darkScheme": "#151514", "tonalRamp": ["oklch(18% 0.003 100)", "oklch(30% 0.003 100)", "oklch(42% 0.003 100)", "oklch(55% 0.003 100)", "oklch(68% 0.003 100)", "oklch(80% 0.003 100)", "oklch(92% 0.003 100)", "oklch(99% 0.003 100)"] },
-      "paper-2": { "role": "neutral", "displayName": "Paper 2", "canonical": "#f1f1ed", "cssVar": "--paper-2", "darkScheme": "#1d1d1b", "tonalRamp": ["oklch(16% 0.004 100)", "oklch(28% 0.004 100)", "oklch(40% 0.004 100)", "oklch(52% 0.004 100)", "oklch(65% 0.004 100)", "oklch(78% 0.004 100)", "oklch(88% 0.004 100)", "oklch(95% 0.004 100)"] },
-      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#16171a", "cssVar": "--ink", "darkScheme": "#ecebe6", "tonalRamp": ["oklch(15% 0.006 270)", "oklch(20% 0.006 270)", "oklch(32% 0.006 270)", "oklch(45% 0.006 270)", "oklch(58% 0.006 270)", "oklch(72% 0.006 270)", "oklch(85% 0.006 270)", "oklch(95% 0.006 270)"] },
-      "ink-2": { "role": "neutral", "displayName": "Ink 2", "canonical": "#45474c", "cssVar": "--ink-2", "darkScheme": "#b9b8b1", "tonalRamp": ["oklch(15% 0.008 270)", "oklch(25% 0.008 270)", "oklch(37% 0.008 270)", "oklch(48% 0.008 270)", "oklch(60% 0.008 270)", "oklch(72% 0.008 270)", "oklch(84% 0.008 270)", "oklch(95% 0.008 270)"] },
-      "ink-3": { "role": "neutral", "displayName": "Ink 3", "canonical": "#6f7278", "cssVar": "--ink-3", "darkScheme": "#8a8a84", "tonalRamp": ["oklch(15% 0.01 260)", "oklch(26% 0.01 260)", "oklch(38% 0.01 260)", "oklch(52% 0.01 260)", "oklch(63% 0.01 260)", "oklch(74% 0.01 260)", "oklch(85% 0.01 260)", "oklch(95% 0.01 260)"] },
-      "rule": { "role": "neutral", "displayName": "Rule", "canonical": "#d6d7d2", "cssVar": "--rule", "darkScheme": "#33332f", "tonalRamp": ["oklch(15% 0.005 110)", "oklch(28% 0.005 110)", "oklch(40% 0.005 110)", "oklch(52% 0.005 110)", "oklch(64% 0.005 110)", "oklch(76% 0.005 110)", "oklch(87% 0.005 110)", "oklch(95% 0.005 110)"] },
-      "rule-strong": { "role": "neutral", "displayName": "Rule Strong", "canonical": "#16171a", "cssVar": "--rule-strong", "darkScheme": "#ecebe6", "tonalRamp": ["oklch(15% 0.006 270)", "oklch(20% 0.006 270)", "oklch(32% 0.006 270)", "oklch(45% 0.006 270)", "oklch(58% 0.006 270)", "oklch(72% 0.006 270)", "oklch(85% 0.006 270)", "oklch(95% 0.006 270)"] },
-      "highlighter": { "role": "primary", "displayName": "Highlighter", "canonical": "#ffe45c", "cssVar": "--hi", "darkScheme": "#f0d33a", "tonalRamp": ["oklch(20% 0.05 98)", "oklch(32% 0.08 98)", "oklch(45% 0.11 98)", "oklch(58% 0.14 98)", "oklch(70% 0.16 98)", "oklch(82% 0.17 98)", "oklch(91% 0.17 98)", "oklch(96% 0.08 98)"] },
-      "highlighter-soft": { "role": "primary", "displayName": "Highlighter Soft", "canonical": "#fff4b8", "cssVar": "--hi-soft", "darkScheme": "#4d4315", "tonalRamp": ["oklch(20% 0.04 95)", "oklch(32% 0.06 95)", "oklch(45% 0.08 95)", "oklch(58% 0.09 95)", "oklch(70% 0.1 95)", "oklch(82% 0.1 95)", "oklch(91% 0.09 95)", "oklch(96% 0.07 95)"] },
-      "highlighter-ink": { "role": "primary", "displayName": "Highlighter Ink", "canonical": "#16171a", "cssVar": "--hi-ink", "darkScheme": "#151514", "tonalRamp": ["oklch(15% 0.006 270)", "oklch(20% 0.006 270)", "oklch(32% 0.006 270)", "oklch(45% 0.006 270)", "oklch(58% 0.006 270)", "oklch(72% 0.006 270)", "oklch(85% 0.006 270)", "oklch(95% 0.006 270)"] },
-      "pencil": { "role": "secondary", "displayName": "Red Pencil", "canonical": "#c2312a", "cssVar": "--pencil", "darkScheme": "#e5574d", "tonalRamp": ["oklch(18% 0.08 28)", "oklch(28% 0.12 28)", "oklch(40% 0.16 28)", "oklch(52% 0.18 28)", "oklch(63% 0.17 28)", "oklch(74% 0.13 28)", "oklch(85% 0.08 28)", "oklch(95% 0.03 28)"] },
-      "pencil-soft": { "role": "secondary", "displayName": "Pencil Soft", "canonical": "#f6dcd9", "cssVar": "--pencil-soft", "darkScheme": "#3d1f1c", "tonalRamp": ["oklch(18% 0.04 28)", "oklch(28% 0.05 28)", "oklch(40% 0.06 28)", "oklch(52% 0.07 28)", "oklch(64% 0.07 28)", "oklch(76% 0.06 28)", "oklch(88% 0.04 28)", "oklch(95% 0.02 28)"] },
-      "graphite": { "role": "secondary", "displayName": "Graphite", "canonical": "#5a5d63", "cssVar": "--graphite", "darkScheme": "#a5a49d", "tonalRamp": ["oklch(15% 0.01 260)", "oklch(25% 0.01 260)", "oklch(35% 0.01 260)", "oklch(45% 0.01 260)", "oklch(57% 0.01 260)", "oklch(70% 0.01 260)", "oklch(83% 0.01 260)", "oklch(95% 0.01 260)"] }
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#fbfbf9",
+        "cssVar": "--paper",
+        "darkScheme": "#151514",
+        "tonalRamp": [
+          "oklch(18% 0.003 100)",
+          "oklch(30% 0.003 100)",
+          "oklch(42% 0.003 100)",
+          "oklch(55% 0.003 100)",
+          "oklch(68% 0.003 100)",
+          "oklch(80% 0.003 100)",
+          "oklch(92% 0.003 100)",
+          "oklch(99% 0.003 100)"
+        ]
+      },
+      "paper-2": {
+        "role": "neutral",
+        "displayName": "Paper 2",
+        "canonical": "#f1f1ed",
+        "cssVar": "--paper-2",
+        "darkScheme": "#1d1d1b",
+        "tonalRamp": [
+          "oklch(16% 0.004 100)",
+          "oklch(28% 0.004 100)",
+          "oklch(40% 0.004 100)",
+          "oklch(52% 0.004 100)",
+          "oklch(65% 0.004 100)",
+          "oklch(78% 0.004 100)",
+          "oklch(88% 0.004 100)",
+          "oklch(95% 0.004 100)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#16171a",
+        "cssVar": "--ink",
+        "darkScheme": "#ecebe6",
+        "tonalRamp": [
+          "oklch(15% 0.006 270)",
+          "oklch(20% 0.006 270)",
+          "oklch(32% 0.006 270)",
+          "oklch(45% 0.006 270)",
+          "oklch(58% 0.006 270)",
+          "oklch(72% 0.006 270)",
+          "oklch(85% 0.006 270)",
+          "oklch(95% 0.006 270)"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2",
+        "canonical": "#45474c",
+        "cssVar": "--ink-2",
+        "darkScheme": "#b9b8b1",
+        "tonalRamp": [
+          "oklch(15% 0.008 270)",
+          "oklch(25% 0.008 270)",
+          "oklch(37% 0.008 270)",
+          "oklch(48% 0.008 270)",
+          "oklch(60% 0.008 270)",
+          "oklch(72% 0.008 270)",
+          "oklch(84% 0.008 270)",
+          "oklch(95% 0.008 270)"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink 3",
+        "canonical": "#6f7278",
+        "cssVar": "--ink-3",
+        "darkScheme": "#8a8a84",
+        "tonalRamp": [
+          "oklch(15% 0.01 260)",
+          "oklch(26% 0.01 260)",
+          "oklch(38% 0.01 260)",
+          "oklch(52% 0.01 260)",
+          "oklch(63% 0.01 260)",
+          "oklch(74% 0.01 260)",
+          "oklch(85% 0.01 260)",
+          "oklch(95% 0.01 260)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#d6d7d2",
+        "cssVar": "--rule",
+        "darkScheme": "#33332f",
+        "tonalRamp": [
+          "oklch(15% 0.005 110)",
+          "oklch(28% 0.005 110)",
+          "oklch(40% 0.005 110)",
+          "oklch(52% 0.005 110)",
+          "oklch(64% 0.005 110)",
+          "oklch(76% 0.005 110)",
+          "oklch(87% 0.005 110)",
+          "oklch(95% 0.005 110)"
+        ]
+      },
+      "rule-strong": {
+        "role": "neutral",
+        "displayName": "Rule Strong",
+        "canonical": "#16171a",
+        "cssVar": "--rule-strong",
+        "darkScheme": "#ecebe6",
+        "tonalRamp": [
+          "oklch(15% 0.006 270)",
+          "oklch(20% 0.006 270)",
+          "oklch(32% 0.006 270)",
+          "oklch(45% 0.006 270)",
+          "oklch(58% 0.006 270)",
+          "oklch(72% 0.006 270)",
+          "oklch(85% 0.006 270)",
+          "oklch(95% 0.006 270)"
+        ]
+      },
+      "highlighter": {
+        "role": "primary",
+        "displayName": "Highlighter",
+        "canonical": "#ffe45c",
+        "cssVar": "--hi",
+        "darkScheme": "#f0d33a",
+        "tonalRamp": [
+          "oklch(20% 0.05 98)",
+          "oklch(32% 0.08 98)",
+          "oklch(45% 0.11 98)",
+          "oklch(58% 0.14 98)",
+          "oklch(70% 0.16 98)",
+          "oklch(82% 0.17 98)",
+          "oklch(91% 0.17 98)",
+          "oklch(96% 0.08 98)"
+        ]
+      },
+      "highlighter-soft": {
+        "role": "primary",
+        "displayName": "Highlighter Soft",
+        "canonical": "#fff4b8",
+        "cssVar": "--hi-soft",
+        "darkScheme": "#4d4315",
+        "tonalRamp": [
+          "oklch(20% 0.04 95)",
+          "oklch(32% 0.06 95)",
+          "oklch(45% 0.08 95)",
+          "oklch(58% 0.09 95)",
+          "oklch(70% 0.1 95)",
+          "oklch(82% 0.1 95)",
+          "oklch(91% 0.09 95)",
+          "oklch(96% 0.07 95)"
+        ]
+      },
+      "highlighter-ink": {
+        "role": "primary",
+        "displayName": "Highlighter Ink",
+        "canonical": "#16171a",
+        "cssVar": "--hi-ink",
+        "darkScheme": "#151514",
+        "tonalRamp": [
+          "oklch(15% 0.006 270)",
+          "oklch(20% 0.006 270)",
+          "oklch(32% 0.006 270)",
+          "oklch(45% 0.006 270)",
+          "oklch(58% 0.006 270)",
+          "oklch(72% 0.006 270)",
+          "oklch(85% 0.006 270)",
+          "oklch(95% 0.006 270)"
+        ]
+      },
+      "pencil": {
+        "role": "secondary",
+        "displayName": "Red Pencil",
+        "canonical": "#c2312a",
+        "cssVar": "--pencil",
+        "darkScheme": "#e5574d",
+        "tonalRamp": [
+          "oklch(18% 0.08 28)",
+          "oklch(28% 0.12 28)",
+          "oklch(40% 0.16 28)",
+          "oklch(52% 0.18 28)",
+          "oklch(63% 0.17 28)",
+          "oklch(74% 0.13 28)",
+          "oklch(85% 0.08 28)",
+          "oklch(95% 0.03 28)"
+        ]
+      },
+      "pencil-soft": {
+        "role": "secondary",
+        "displayName": "Pencil Soft",
+        "canonical": "#f6dcd9",
+        "cssVar": "--pencil-soft",
+        "darkScheme": "#3d1f1c",
+        "tonalRamp": [
+          "oklch(18% 0.04 28)",
+          "oklch(28% 0.05 28)",
+          "oklch(40% 0.06 28)",
+          "oklch(52% 0.07 28)",
+          "oklch(64% 0.07 28)",
+          "oklch(76% 0.06 28)",
+          "oklch(88% 0.04 28)",
+          "oklch(95% 0.02 28)"
+        ]
+      },
+      "graphite": {
+        "role": "secondary",
+        "displayName": "Graphite",
+        "canonical": "#5a5d63",
+        "cssVar": "--graphite",
+        "darkScheme": "#a5a49d",
+        "tonalRamp": [
+          "oklch(15% 0.01 260)",
+          "oklch(25% 0.01 260)",
+          "oklch(35% 0.01 260)",
+          "oklch(45% 0.01 260)",
+          "oklch(57% 0.01 260)",
+          "oklch(70% 0.01 260)",
+          "oklch(83% 0.01 260)",
+          "oklch(95% 0.01 260)"
+        ]
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "The page headline only; balanced, held to 20ch. Legal pages step down to clamp(2rem, 4vw, 2.75rem)." },
-      "headline": { "displayName": "Headline", "purpose": "Section openers at 22ch." },
-      "title": { "displayName": "Title", "purpose": "Tier names, process moves, form title, promise heads. Price titles 1.125rem." },
-      "statement": { "displayName": "Statement", "purpose": "The problem statement at 30ch; checklist questions share weight and tracking at clamp(1.25rem, 2vw, 1.5rem)." },
-      "lede": { "displayName": "Lede", "purpose": "Hero and closing subtext in Ink 2 at 36ch." },
-      "body": { "displayName": "Body", "purpose": "Prose at 64ch with text-wrap: pretty. Small body 0.9375rem, help and legal 0.875rem." },
-      "manuscript": { "displayName": "Manuscript", "purpose": "Sheet body, tier examples, ZIP chips, contact line, textarea, inline .mono values. Tabular numerals." },
-      "label": { "displayName": "Label", "purpose": "Sheet head and foot, field names, citations, margin notes, wordmark descriptor, preview strip. Tags at 0.75rem. Never uppercase or tracked." },
-      "figure": { "displayName": "Figure", "purpose": "Prices; tier letters at clamp(2rem, 4vw, 2.75rem)." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "The page headline only; balanced, held to 20ch. Legal pages step down to clamp(2rem, 4vw, 2.75rem)."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section openers at 22ch."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Tier names, process moves, form title, promise heads. Price titles 1.125rem."
+      },
+      "statement": {
+        "displayName": "Statement",
+        "purpose": "The problem statement at 30ch; checklist questions share weight and tracking at clamp(1.25rem, 2vw, 1.5rem)."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Hero and closing subtext in Ink 2 at 36ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prose at 64ch with text-wrap: pretty. Small body 0.9375rem, help and legal 0.875rem."
+      },
+      "manuscript": {
+        "displayName": "Manuscript",
+        "purpose": "Sheet body, tier examples, ZIP chips, contact line, textarea, inline .mono values. Tabular numerals."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Sheet head and foot, field names, citations, margin notes, wordmark descriptor, preview strip. Tags at 0.75rem. Never uppercase or tracked."
+      },
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "Prices; tier letters at clamp(2rem, 4vw, 2.75rem)."
+      }
     },
     "shadows": [
-      { "name": "shadow-sheet", "value": "0 1px 0 rgb(22 23 26 / 0.08), 0 8px 18px -12px rgb(22 23 26 / 0.28)", "purpose": "The manuscript sheet lying on the desk. The only shadow in the system." },
-      { "name": "shadow-sheet-dark-desk", "value": "0 1px 0 rgb(0 0 0 / 0.6), 0 10px 24px -12px rgb(0 0 0 / 0.9)", "purpose": "The white sheet under prefers-color-scheme: dark." },
-      { "name": "field-focus-ring", "value": "0 0 0 3px var(--hi-soft)", "purpose": "Text field focus, paired with the border turning to ink. A flat ring, not depth." }
+      {
+        "name": "shadow-sheet",
+        "value": "0 1px 0 rgb(22 23 26 / 0.08), 0 8px 18px -12px rgb(22 23 26 / 0.28)",
+        "purpose": "The manuscript sheet lying on the desk. The only shadow in the system."
+      },
+      {
+        "name": "shadow-sheet-dark-desk",
+        "value": "0 1px 0 rgb(0 0 0 / 0.6), 0 10px 24px -12px rgb(0 0 0 / 0.9)",
+        "purpose": "The white sheet under prefers-color-scheme: dark."
+      },
+      {
+        "name": "field-focus-ring",
+        "value": "0 0 0 3px var(--hi-soft)",
+        "purpose": "Text field focus, paired with the border turning to ink. A flat ring, not depth."
+      }
     ],
-    "motion": [
-      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The only easing curve." },
-      { "name": "t-fast", "value": "180ms", "purpose": "Button, link, icon, border and nav-link state transitions." },
-      { "name": "t-slow", "value": "900ms", "purpose": "The highlight sweep (120ms delay) and pencil strike (200ms delay), each once on entering view." },
-      { "name": "reveal", "value": "opacity 700ms, translateY(14px) to 0", "purpose": "Section entry via IntersectionObserver (threshold 0.12, rootMargin 0 0 -8% 0), once." },
-      { "name": "reduced-motion", "value": "all transitions and animations 0.01ms; scroll-behavior auto; in-view applied immediately", "purpose": "Highlights and strikes render at final state with no sweep." }
-    ],
+    "motion": {
+      "0": {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The only easing curve."
+      },
+      "1": {
+        "name": "t-fast",
+        "value": "180ms",
+        "purpose": "Button, link, icon, border and nav-link state transitions."
+      },
+      "2": {
+        "name": "t-slow",
+        "value": "900ms",
+        "purpose": "The highlight sweep (120ms delay) and pencil strike (200ms delay), each once on entering view."
+      },
+      "3": {
+        "name": "reveal",
+        "value": "opacity 700ms, translateY(14px) to 0",
+        "purpose": "Section entry via IntersectionObserver (threshold 0.12, rootMargin 0 0 -8% 0), once."
+      },
+      "4": {
+        "name": "reduced-motion",
+        "value": "all transitions and animations 0.01ms; scroll-behavior auto; in-view applied immediately",
+        "purpose": "Highlights and strikes render at final state with no sweep."
+      },
+      "grammar": "checker's desk: typed, highlighted, ticked, struck; one-shot; observer-driven",
+      "easing": "cubic-bezier(0.16, 1, 0.3, 1)",
+      "feedbackMs": 180,
+      "arrivalMs": [
+        600,
+        900
+      ],
+      "focal": {
+        "heroRiseStepMs": 110,
+        "sheetSettleMs": 900,
+        "typewriterMsPerChar": 14,
+        "highlightSweepMs": 900,
+        "checkDrawMs": 520
+      },
+      "supporting": {
+        "staggerMs": 70,
+        "staggerCap": 6,
+        "checkRowDelayMs": 260,
+        "headingFocusBlurPx": 6,
+        "buttonInkFillMs": 320,
+        "faqUnfoldMs": 300
+      },
+      "reducedMotion": "all transitions 0.01ms; reveal targets shown; marks and strikes complete; typewriter skipped; feedback kept"
+    },
     "breakpoints": [
-      { "name": "fields-stack", "value": "600px", "purpose": "Definition grid collapses label column (max-width)." },
-      { "name": "form-row", "value": "640px", "purpose": "Form row pairs name and agency." },
-      { "name": "zips-2", "value": "720px", "purpose": "ZIP groups two-up." },
-      { "name": "nav-collapse", "value": "760px", "purpose": "Nav links and wordmark descriptor hide (max-width)." },
-      { "name": "two-col", "value": "900px", "purpose": "7/5, 5/7 and 1/1 grids, three-column prices and delivery, three-column tier rows, footer columns." },
-      { "name": "zips-3", "value": "1000px", "purpose": "ZIP groups three-up." },
-      { "name": "margin-gutter", "value": "1440px", "purpose": "Sheet margin note hangs in the right gutter." }
+      {
+        "name": "fields-stack",
+        "value": "600px",
+        "purpose": "Definition grid collapses label column (max-width)."
+      },
+      {
+        "name": "form-row",
+        "value": "640px",
+        "purpose": "Form row pairs name and agency."
+      },
+      {
+        "name": "zips-2",
+        "value": "720px",
+        "purpose": "ZIP groups two-up."
+      },
+      {
+        "name": "nav-collapse",
+        "value": "760px",
+        "purpose": "Nav links and wordmark descriptor hide (max-width)."
+      },
+      {
+        "name": "two-col",
+        "value": "900px",
+        "purpose": "7/5, 5/7 and 1/1 grids, three-column prices and delivery, three-column tier rows, footer columns."
+      },
+      {
+        "name": "zips-3",
+        "value": "1000px",
+        "purpose": "ZIP groups three-up."
+      },
+      {
+        "name": "margin-gutter",
+        "value": "1440px",
+        "purpose": "Sheet margin note hangs in the right gutter."
+      }
     ],
     "browserSurfaces": {
       "selection": "background var(--hi); color var(--hi-ink)",
@@ -129,22 +447,6 @@
       "css": ".ds-tag { display: inline-block; font-family: var(--mono, 'Courier Prime', monospace); font-size: 0.75rem; padding: 0.1em 0.45em; border: 1px solid var(--ink, #16171a); border-radius: 2px; line-height: 1.5; color: var(--ink, #16171a); } .ds-tag-a { background: var(--hi, #ffe45c); border-color: var(--hi, #ffe45c); color: var(--hi-ink, #16171a); } .ds-tag-kill { border-color: var(--pencil, #c2312a); color: var(--pencil, #c2312a); }"
     },
     {
-      "name": "Text Field",
-      "kind": "input",
-      "refersTo": "input",
-      "description": "Paper fill, Ink 3 hairline, square corners; focus turns the border ink with a soft highlighter ring; invalid turns the border pencil with a pencil error line.",
-      "html": "<div class=\"ds-field\"><label for=\"ds-email\">Your email</label><input id=\"ds-email\" type=\"email\" placeholder=\"you@agency.com\"><span class=\"ds-help\">The sample is sent here.</span></div><div class=\"ds-field ds-invalid\"><label for=\"ds-zips\">ZIPs or area you sell into</label><textarea id=\"ds-zips\" placeholder=\"33131, 33139, Coral Gables\"></textarea><span class=\"ds-error\">Tell me which ZIPs or areas you sell into.</span></div>",
-      "css": ".ds-field { display: grid; gap: 0.4rem; margin-top: 1.25rem; font-family: var(--sans, 'Bricolage Grotesque', sans-serif); font-size: 1.0625rem; color: var(--ink, #16171a); } .ds-field label { font-weight: 500; } .ds-help { font-size: 0.875rem; color: var(--ink-3, #6f7278); } .ds-field input, .ds-field textarea { width: 100%; padding: 0.8rem 0.9rem; background: var(--paper, #fbfbf9); border: 1px solid var(--ink-3, #6f7278); border-radius: 2px; font: inherit; color: inherit; transition: border-color 180ms cubic-bezier(0.16,1,0.3,1), box-shadow 180ms cubic-bezier(0.16,1,0.3,1); } .ds-field textarea { min-height: 5.5rem; resize: vertical; font-family: var(--mono, 'Courier Prime', monospace); font-size: 0.9375rem; } .ds-field input::placeholder, .ds-field textarea::placeholder { color: var(--ink-3, #6f7278); } .ds-field input:focus, .ds-field textarea:focus { outline: none; border-color: var(--ink, #16171a); box-shadow: 0 0 0 3px var(--hi-soft, #fff4b8); } .ds-invalid input, .ds-invalid textarea { border-color: var(--pencil, #c2312a); } .ds-error { font-size: 0.875rem; color: var(--pencil, #c2312a); }"
-    },
-    {
-      "name": "Price Entry",
-      "kind": "custom",
-      "refersTo": "sheet",
-      "description": "One line of the price sheet: rule above, title, mono count, a typewriter figure (highlighted when free), and a short description. No box.",
-      "html": "<div class=\"ds-price\"><h3>Sample</h3><span class=\"ds-count\">10 records</span><span class=\"ds-amount ds-free\">Free</span><p class=\"ds-what\">Ten checked records for the ZIPs you sell into, with every field and every source.</p></div>",
-      "css": ".ds-price { display: grid; grid-template-columns: 1fr auto; gap: 0.5rem 1.5rem; padding: 1.4rem 0; border-top: 1px solid var(--rule-strong, #16171a); border-bottom: 1px solid var(--rule, #d6d7d2); align-items: baseline; max-width: 24rem; font-family: var(--sans, 'Bricolage Grotesque', sans-serif); color: var(--ink, #16171a); } .ds-price h3 { margin: 0; font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; } .ds-count { font-family: var(--mono, 'Courier Prime', monospace); font-variant-numeric: tabular-nums; color: var(--ink-2, #45474c); font-size: 0.9375rem; } .ds-amount { grid-column: 1 / -1; justify-self: start; font-family: var(--mono, 'Courier Prime', monospace); font-weight: 700; font-size: clamp(1.75rem, 3vw, 2.25rem); letter-spacing: -0.02em; line-height: 1; margin-top: 0.25rem; } .ds-free { background: var(--hi, #ffe45c); color: var(--hi-ink, #16171a); padding: 0.05em 0.25em; } .ds-what { grid-column: 1 / -1; margin: 0; color: var(--ink-2, #45474c); font-size: 1.0625rem; line-height: 1.55; max-width: 52ch; }"
-    },
-    {
       "name": "Promise Item",
       "kind": "custom",
       "refersTo": "sheet",
@@ -165,12 +467,36 @@
       "Browser chrome carries the world too: selection is highlighter, focus is an ink outline, the scrollbar is square ink-3 on paper-2."
     ],
     "rules": [
-      { "name": "The One Highlighter Rule", "body": "Yellow appears only on a verified passage or on the single call to action. If a new element wants yellow, it must be one of those two things; otherwise it is ink.", "section": "colors" },
-      { "name": "The Red Pencil Rule", "body": "Red is never decorative and never an action. It marks something killed, refused, invalid or pending a decision, and it always sits with the thing it marks (a strike, a tag, an X, a border, an underline).", "section": "colors" },
-      { "name": "The White Paper Rule", "body": "The manuscript sheet is white paper in both schemes. Do not theme the sheet dark.", "section": "colors" },
-      { "name": "The Two Hands Rule", "body": "If it is the seller talking, it is the grotesk. If it is a record, a number, a label or a citation, it is the typewriter. Never set a heading in mono; never set a record field in the grotesk.", "section": "typography" },
-      { "name": "The No Eyebrow Rule", "body": "Headings stand alone. No small caps, no uppercase kicker, no tracked label above an h1 or h2. The only small mono text near a heading is a sheet head inside a sheet, which is a document header, not an eyebrow.", "section": "typography" },
-      { "name": "The One Object Rule", "body": "Only the manuscript sheet has a shadow. New containers get a rule or nothing.", "section": "elevation" }
+      {
+        "name": "The One Highlighter Rule",
+        "body": "Yellow appears only on a verified passage or on the single call to action. If a new element wants yellow, it must be one of those two things; otherwise it is ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Red Pencil Rule",
+        "body": "Red is never decorative and never an action. It marks something killed, refused, invalid or pending a decision, and it always sits with the thing it marks (a strike, a tag, an X, a border, an underline).",
+        "section": "colors"
+      },
+      {
+        "name": "The White Paper Rule",
+        "body": "The manuscript sheet is white paper in both schemes. Do not theme the sheet dark.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Hands Rule",
+        "body": "If it is the seller talking, it is the grotesk. If it is a record, a number, a label or a citation, it is the typewriter. Never set a heading in mono; never set a record field in the grotesk.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Eyebrow Rule",
+        "body": "Headings stand alone. No small caps, no uppercase kicker, no tracked label above an h1 or h2. The only small mono text near a heading is a sheet head inside a sheet, which is a document header, not an eyebrow.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Object Rule",
+        "body": "Only the manuscript sheet has a shadow. New containers get a rule or nothing.",
+        "section": "elevation"
+      }
     ],
     "dos": [
       "Do confine yellow to verified passages and the single \"Request a free sample\" action; everything else is ink.",

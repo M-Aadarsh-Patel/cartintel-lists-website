@@ -167,7 +167,7 @@ Under a dark scheme the desk goes dark and the ink goes light, but the manuscrip
 - Two faces with fixed jobs: grotesk for the page voice, typewriter mono for records, figures, labels and citations.
 - Hairline rules and white space do the separating; the manuscript sheet is the only bordered, shadowed container.
 - Square geometry everywhere (2px radius); 1px rules; a stronger ink rule opens each ledger.
-- One authored motion: the highlight sweeps in once and the pencil strike draws once when the record enters view.
+- One motion grammar, the checker's desk: things are typed, highlighted, ticked and struck, once, as they come into view. See Motion.
 - Browser chrome carries the world too: selection is highlighter, focus is an ink outline, the scrollbar is square ink-3 on paper-2.
 
 ## Colors
@@ -249,7 +249,7 @@ Flat by default. The page is ink on paper; depth is conveyed by rules (hairline 
 
 ## Shapes
 
-Square. Every corner in the system is 2px: buttons, the sheet, tags, inputs, the checklist box, ZIP chips, the portrait frame, the form status. The focus outline is 1px. The scrollbar thumb is 0. Borders are 1px in `rule` (dividers, sheet, chips, form status uses `rule-strong`), 1px in `ink` (buttons, tags), 1px in `ink-3` (inputs), 1.5px in `ink` (checklist box). Rules are horizontal and full-width; the evidence rule inside a sheet is dashed. The only diagonals are the pencil strikes: a 2px line rotated -1.2deg through a killed span, and -4deg through a refused record's whole field block, both drawn from the left.
+Square. Every corner in the system is 2px: buttons, the sheet, tags, inputs, the checklist box, the form status. The focus outline is 1px. The scrollbar thumb is 0. Borders are 1px in `rule` (dividers, sheet, chips, form status uses `rule-strong`), 1px in `ink` (buttons, tags), 1px in `ink-3` (inputs), 1.5px in `ink` (checklist box). Rules are horizontal and full-width; the evidence rule inside a sheet is dashed. The only diagonals are the pencil strikes: a 2px line rotated -1.2deg through a killed span, and -4deg through a refused record's whole field block, both drawn from the left.
 
 Icons are inline SVG from a sprite (check, x, arrow-right, arrow-up-right, caret-down, minus), 1em and filled with currentColor; they sit beside text, never alone as a button.
 
@@ -277,7 +277,7 @@ The checker's annotation: Courier Prime 0.8125rem/1.45 in graphite, a 1rem icon 
 ### Highlight and Pencil Strike (inline devices)
 - **Highlight (`.hi`):** a flat single-color `background-image` of highlighter, `box-decoration-break: clone`, `0.05em 0.15em` padding with negative horizontal margin so the mark overhangs the text; text in highlighter-ink. Inside a `.sweep` container it starts at 0% width and sweeps to 100% over 900ms with a 120ms delay when `.in-view` lands.
 - **Strike (`.kill`):** text dims to Ink 2; a 2px pencil line at 52% height, rotated -1.2deg from the left, overhanging 0.1em each side. Inside `.sweep` it scales from 0 to 1 over 900ms with a 200ms delay.
-- Both devices are the page's single authored motion. Under `prefers-reduced-motion: reduce` the JS marks everything in-view immediately and CSS collapses all transitions to 0.01ms; the highlight and strike are simply present.
+- Both devices draw once when their `.sweep` container enters view (the Free price and the never-sold row use the same mechanism). Under `prefers-reduced-motion: reduce` the JS marks everything in-view immediately and CSS collapses all transitions to 0.01ms; the highlight and strike are simply present.
 
 ### Tags
 Inline mono at 0.75rem, `0.1em 0.45em`, 1px ink border, 2px corners. `tag-a` (verified tier) fills highlighter; `tag-kill` borders and colors in pencil with no fill. Tags name tiers and refusals only; they are not category chips.
@@ -308,6 +308,16 @@ Native `details`, each on a `rule` (the first on `rule-strong`), summary at 500 
 ### Preview Mode
 `body[data-preview="true"]` reveals the mono preview strip on `paper-2` and gives every `.todo` element a dashed pencil underline with a help cursor and a `title`; each `.todo` also carries a `data-decision` key naming the owner decision. `.synthetic-label` (mono 0.75rem pencil) appears in sheet feet to mark illustrative records. Setting `data-preview="false"` removes all of it without touching layout.
 
+## Motion
+
+One grammar, the checker's desk. Nothing loops, nothing follows the pointer, nothing animates layout. Every effect is one-shot, triggered by an IntersectionObserver, and uses transform, opacity, background-size, stroke-dashoffset, or a bounded blur on a heading. Easing is `cubic-bezier(0.16, 1, 0.3, 1)` throughout; state feedback is 180ms, arrivals 600 to 900ms.
+
+**Focal sequence (hero, on load).** Headline, lede, actions and note rise 14px in order at 110ms steps. The sheet settles from 0.985 scale. Once the sheet is 35% in view (700ms grace), its field values are typed at 14ms per character behind a blinking ink-block caret, one field after another, with each `dd`'s final height reserved so the sheet never jumps. When typing ends the evidence block and footer fade in, the highlighter sweeps the evidence sentence (380ms after), and the margin note slides in with its check mark drawing itself (`stroke-dashoffset` 26 to 0). A 6s fallback completes the record if the reader never looks; with JS off the record is simply there.
+
+**Supporting motion, same grammar.** `svg.draw` check marks (margin note, checklist boxes, promise list, ask list, submit acknowledgment) draw at 520ms with a per-row delay of 260ms. Ledger rows, prices, fields, FAQ items, moves and how-to steps arrive with a 70ms stagger capped at six. Section headings and the statement come into focus from a 6px blur. The refused record's strike, the never-sold strike and the Free highlight draw once when their `.sweep` container is in view. Primary buttons fill with ink from the left over 320ms on hover and focus. The nav gains a soft shadow once a 12px sentinel leaves the viewport (no scroll listener). FAQ answers unfold over 300ms on open. On submit the button swaps its arrow for a drawn check for four seconds and the status box unfolds.
+
+**Reduced motion.** `prefers-reduced-motion: reduce` sets every transition to 0.01ms, shows all reveal targets immediately, renders check marks and strikes complete, skips the typewriter, and keeps color and state feedback (button fill, invalid field ring, status box) intact.
+
 ## Do's and Don'ts
 
 ### Do:
@@ -323,7 +333,7 @@ Native `details`, each on a `rule` (the first on `rule-strong`), summary at 500 
 ### Don't:
 - **Don't** add a kicker, eyebrow, small-caps or uppercase tracked label above any heading.
 - **Don't** create cards. The sheet is the only bordered, shadowed container; new content goes in ledger rows on rules.
-- **Don't** use gradients as tone or decoration; the only `linear-gradient` in the system is the highlighter's flat single-color fill, which exists so the mark can sweep.
+- **Don't** use gradients as tone or decoration; the only `linear-gradient`s in the system are flat single-color fills whose size animates: the highlighter over text and the ink that fills a primary button from the left on hover, which exists so the mark can sweep.
 - **Don't** introduce a second accent, a blue link color, or a green success color; confirmation is an ink check mark.
 - **Don't** round anything past 2px or draw pills.
 - **Don't** use em dashes in copy; the voice uses periods, commas and colons.
