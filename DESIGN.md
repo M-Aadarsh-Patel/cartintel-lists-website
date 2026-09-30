@@ -310,7 +310,7 @@ Native `details`, each on a `rule` (the first on `rule-strong`), summary at 500 
 
 ## Motion
 
-One grammar, the checker's desk. Nothing loops, nothing follows the pointer, nothing animates layout. Every effect is one-shot, triggered by an IntersectionObserver, and uses transform, opacity, background-size, stroke-dashoffset, or a bounded blur on a heading. Easing is `cubic-bezier(0.16, 1, 0.3, 1)` throughout; state feedback is 180ms, arrivals 600 to 900ms.
+One grammar, the checker's desk. Nothing loops, nothing follows the pointer, nothing animates layout. Every effect is one-shot, triggered by an IntersectionObserver, and uses transform, opacity, background-size, or stroke-dashoffset. Easing is `cubic-bezier(0.16, 1, 0.3, 1)` throughout; state feedback is 180ms, arrivals 600 to 900ms.
 
 **Focal sequence (hero, on load).** Headline, lede, actions and note rise 14px in order at 110ms steps. The sheet settles from 0.985 scale. Once the sheet is 35% in view (700ms grace), its field values are typed at 14ms per character behind a blinking ink-block caret, one field after another, with each `dd`'s final height reserved so the sheet never jumps. When typing ends the evidence block and footer fade in, the highlighter sweeps the evidence sentence (380ms after), and the margin note slides in with its check mark drawing itself (`stroke-dashoffset` 26 to 0). A 6s fallback completes the record if the reader never looks; with JS off the record is simply there.
 
