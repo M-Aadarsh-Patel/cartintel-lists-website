@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-30T00:00:00Z",
+  "title": "Design System: CartIntel",
+  "extensions": {
+    "colorMeta": {
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#fbfbf9", "cssVar": "--paper", "darkScheme": "#151514", "tonalRamp": ["oklch(18% 0.003 100)", "oklch(30% 0.003 100)", "oklch(42% 0.003 100)", "oklch(55% 0.003 100)", "oklch(68% 0.003 100)", "oklch(80% 0.003 100)", "oklch(92% 0.003 100)", "oklch(99% 0.003 100)"] },
+      "paper-2": { "role": "neutral", "displayName": "Paper 2", "canonical": "#f1f1ed", "cssVar": "--paper-2", "darkScheme": "#1d1d1b", "tonalRamp": ["oklch(16% 0.004 100)", "oklch(28% 0.004 100)", "oklch(40% 0.004 100)", "oklch(52% 0.004 100)", "oklch(65% 0.004 100)", "oklch(78% 0.004 100)", "oklch(88% 0.004 100)", "oklch(95% 0.004 100)"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#16171a", "cssVar": "--ink", "darkScheme": "#ecebe6", "tonalRamp": ["oklch(15% 0.006 270)", "oklch(20% 0.006 270)", "oklch(32% 0.006 270)", "oklch(45% 0.006 270)", "oklch(58% 0.006 270)", "oklch(72% 0.006 270)", "oklch(85% 0.006 270)", "oklch(95% 0.006 270)"] },
+      "ink-2": { "role": "neutral", "displayName": "Ink 2", "canonical": "#45474c", "cssVar": "--ink-2", "darkScheme": "#b9b8b1", "tonalRamp": ["oklch(15% 0.008 270)", "oklch(25% 0.008 270)", "oklch(37% 0.008 270)", "oklch(48% 0.008 270)", "oklch(60% 0.008 270)", "oklch(72% 0.008 270)", "oklch(84% 0.008 270)", "oklch(95% 0.008 270)"] },
+      "ink-3": { "role": "neutral", "displayName": "Ink 3", "canonical": "#6f7278", "cssVar": "--ink-3", "darkScheme": "#8a8a84", "tonalRamp": ["oklch(15% 0.01 260)", "oklch(26% 0.01 260)", "oklch(38% 0.01 260)", "oklch(52% 0.01 260)", "oklch(63% 0.01 260)", "oklch(74% 0.01 260)", "oklch(85% 0.01 260)", "oklch(95% 0.01 260)"] },
+      "rule": { "role": "neutral", "displayName": "Rule", "canonical": "#d6d7d2", "cssVar": "--rule", "darkScheme": "#33332f", "tonalRamp": ["oklch(15% 0.005 110)", "oklch(28% 0.005 110)", "oklch(40% 0.005 110)", "oklch(52% 0.005 110)", "oklch(64% 0.005 110)", "oklch(76% 0.005 110)", "oklch(87% 0.005 110)", "oklch(95% 0.005 110)"] },
+      "rule-strong": { "role": "neutral", "displayName": "Rule Strong", "canonical": "#16171a", "cssVar": "--rule-strong", "darkScheme": "#ecebe6", "tonalRamp": ["oklch(15% 0.006 270)", "oklch(20% 0.006 270)", "oklch(32% 0.006 270)", "oklch(45% 0.006 270)", "oklch(58% 0.006 270)", "oklch(72% 0.006 270)", "oklch(85% 0.006 270)", "oklch(95% 0.006 270)"] },
+      "highlighter": { "role": "primary", "displayName": "Highlighter", "canonical": "#ffe45c", "cssVar": "--hi", "darkScheme": "#f0d33a", "tonalRamp": ["oklch(20% 0.05 98)", "oklch(32% 0.08 98)", "oklch(45% 0.11 98)", "oklch(58% 0.14 98)", "oklch(70% 0.16 98)", "oklch(82% 0.17 98)", "oklch(91% 0.17 98)", "oklch(96% 0.08 98)"] },
+      "highlighter-soft": { "role": "primary", "displayName": "Highlighter Soft", "canonical": "#fff4b8", "cssVar": "--hi-soft", "darkScheme": "#4d4315", "tonalRamp": ["oklch(20% 0.04 95)", "oklch(32% 0.06 95)", "oklch(45% 0.08 95)", "oklch(58% 0.09 95)", "oklch(70% 0.1 95)", "oklch(82% 0.1 95)", "oklch(91% 0.09 95)", "oklch(96% 0.07 95)"] },
+      "highlighter-ink": { "role": "primary", "displayName": "Highlighter Ink", "canonical": "#16171a", "cssVar": "--hi-ink", "darkScheme": "#151514", "tonalRamp": ["oklch(15% 0.006 270)", "oklch(20% 0.006 270)", "oklch(32% 0.006 270)", "oklch(45% 0.006 270)", "oklch(58% 0.006 270)", "oklch(72% 0.006 270)", "oklch(85% 0.006 270)", "oklch(95% 0.006 270)"] },
+      "pencil": { "role": "secondary", "displayName": "Red Pencil", "canonical": "#c2312a", "cssVar": "--pencil", "darkScheme": "#e5574d", "tonalRamp": ["oklch(18% 0.08 28)", "oklch(28% 0.12 28)", "oklch(40% 0.16 28)", "oklch(52% 0.18 28)", "oklch(63% 0.17 28)", "oklch(74% 0.13 28)", "oklch(85% 0.08 28)", "oklch(95% 0.03 28)"] },
+      "pencil-soft": { "role": "secondary", "displayName": "Pencil Soft", "canonical": "#f6dcd9", "cssVar": "--pencil-soft", "darkScheme": "#3d1f1c", "tonalRamp": ["oklch(18% 0.04 28)", "oklch(28% 0.05 28)", "oklch(40% 0.06 28)", "oklch(52% 0.07 28)", "oklch(64% 0.07 28)", "oklch(76% 0.06 28)", "oklch(88% 0.04 28)", "oklch(95% 0.02 28)"] },
+      "graphite": { "role": "secondary", "displayName": "Graphite", "canonical": "#5a5d63", "cssVar": "--graphite", "darkScheme": "#a5a49d", "tonalRamp": ["oklch(15% 0.01 260)", "oklch(25% 0.01 260)", "oklch(35% 0.01 260)", "oklch(45% 0.01 260)", "oklch(57% 0.01 260)", "oklch(70% 0.01 260)", "oklch(83% 0.01 260)", "oklch(95% 0.01 260)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The page headline only; balanced, held to 20ch. Legal pages step down to clamp(2rem, 4vw, 2.75rem)." },
+      "headline": { "displayName": "Headline", "purpose": "Section openers at 22ch." },
+      "title": { "displayName": "Title", "purpose": "Tier names, process moves, form title, promise heads. Price titles 1.125rem." },
+      "statement": { "displayName": "Statement", "purpose": "The problem statement at 30ch; checklist questions share weight and tracking at clamp(1.25rem, 2vw, 1.5rem)." },
+      "lede": { "displayName": "Lede", "purpose": "Hero and closing subtext in Ink 2 at 36ch." },
+      "body": { "displayName": "Body", "purpose": "Prose at 64ch with text-wrap: pretty. Small body 0.9375rem, help and legal 0.875rem." },
+      "manuscript": { "displayName": "Manuscript", "purpose": "Sheet body, tier examples, ZIP chips, contact line, textarea, inline .mono values. Tabular numerals." },
+      "label": { "displayName": "Label", "purpose": "Sheet head and foot, field names, citations, margin notes, wordmark descriptor, preview strip. Tags at 0.75rem. Never uppercase or tracked." },
+      "figure": { "displayName": "Figure", "purpose": "Prices; tier letters at clamp(2rem, 4vw, 2.75rem)." }
+    },
+    "shadows": [
+      { "name": "shadow-sheet", "value": "0 1px 0 rgb(22 23 26 / 0.08), 0 8px 18px -12px rgb(22 23 26 / 0.28)", "purpose": "The manuscript sheet lying on the desk. The only shadow in the system." },
+      { "name": "shadow-sheet-dark-desk", "value": "0 1px 0 rgb(0 0 0 / 0.6), 0 10px 24px -12px rgb(0 0 0 / 0.9)", "purpose": "The white sheet under prefers-color-scheme: dark." },
+      { "name": "field-focus-ring", "value": "0 0 0 3px var(--hi-soft)", "purpose": "Text field focus, paired with the border turning to ink. A flat ring, not depth." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "The only easing curve." },
+      { "name": "t-fast", "value": "180ms", "purpose": "Button, link, icon, border and nav-link state transitions." },
+      { "name": "t-slow", "value": "900ms", "purpose": "The highlight sweep (120ms delay) and pencil strike (200ms delay), each once on entering view." },
+      { "name": "reveal", "value": "opacity 700ms, translateY(14px) to 0", "purpose": "Section entry via IntersectionObserver (threshold 0.12, rootMargin 0 0 -8% 0), once." },
+      { "name": "reduced-motion", "value": "all transitions and animations 0.01ms; scroll-behavior auto; in-view applied immediately", "purpose": "Highlights and strikes render at final state with no sweep." }
+    ],
+    "breakpoints": [
+      { "name": "fields-stack", "value": "600px", "purpose": "Definition grid collapses label column (max-width)." },
+      { "name": "form-row", "value": "640px", "purpose": "Form row pairs name and agency." },
+      { "name": "zips-2", "value": "720px", "purpose": "ZIP groups two-up." },
+      { "name": "nav-collapse", "value": "760px", "purpose": "Nav links and wordmark descriptor hide (max-width)." },
+      { "name": "two-col", "value": "900px", "purpose": "7/5, 5/7 and 1/1 grids, three-column prices and delivery, three-column tier rows, footer columns." },
+      { "name": "zips-3", "value": "1000px", "purpose": "ZIP groups three-up." },
+      { "name": "margin-gutter", "value": "1440px", "purpose": "Sheet margin note hangs in the right gutter." }
+    ],
+    "browserSurfaces": {
+      "selection": "background var(--hi); color var(--hi-ink)",
+      "focusVisible": "outline 2px solid var(--ink); outline-offset 3px; border-radius 1px",
+      "caret": "var(--ink)",
+      "scrollbar": "scrollbar-color var(--ink-3) var(--paper-2); 12px; thumb with 3px paper-2 border, radius 0"
+    },
+    "previewMode": {
+      "trigger": "body[data-preview=\"true\"]",
+      "strip": ".preview-strip: paper-2 ground, 1px rule bottom, mono 0.8125rem Ink 2, centered",
+      "todo": ".todo: dashed pencil underline, 0.2em offset, cursor help, title attribute; paired with data-decision=\"<key>\"",
+      "syntheticLabel": ".synthetic-label: mono 0.75rem pencil, shown only in preview"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one action. Highlighter fill, ink text; inverts to ink on hover; the arrow nudges right.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Request a free sample <svg class=\"ds-i\" viewBox=\"0 0 256 256\" aria-hidden=\"true\"><path d=\"M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 1.25rem; border: 1px solid var(--ink, #16171a); border-radius: 2px; background: var(--ink, #16171a); color: var(--paper, #fbfbf9); font-family: var(--sans, 'Bricolage Grotesque', sans-serif); font-size: 1.0625rem; font-weight: 600; text-decoration: none; white-space: nowrap; line-height: 1; transition: transform 180ms cubic-bezier(0.16,1,0.3,1), background-color 180ms cubic-bezier(0.16,1,0.3,1), color 180ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary { background: var(--hi, #ffe45c); color: var(--hi-ink, #16171a); border-color: var(--hi, #ffe45c); } .ds-btn-primary:hover { background: var(--ink, #16171a); color: var(--paper, #fbfbf9); border-color: var(--ink, #16171a); } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 2px solid var(--ink, #16171a); outline-offset: 3px; border-radius: 1px; } .ds-i { width: 1.05em; height: 1.05em; fill: currentColor; flex: none; transition: transform 180ms cubic-bezier(0.16,1,0.3,1); } .ds-btn:hover .ds-i { transform: translateX(3px); }"
+    },
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "The default .btn: ink fill, paper text. Only the skip link ships it; there is no ghost button.",
+      "html": "<a class=\"ds-btn-ink\" href=\"#\">Skip to content</a>",
+      "css": ".ds-btn-ink { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 1.25rem; border: 1px solid var(--ink, #16171a); border-radius: 2px; background: var(--ink, #16171a); color: var(--paper, #fbfbf9); font-family: var(--sans, 'Bricolage Grotesque', sans-serif); font-size: 1.0625rem; font-weight: 600; text-decoration: none; line-height: 1; transition: transform 180ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-ink:active { transform: translateY(1px); } .ds-btn-ink:focus-visible { outline: 2px solid var(--ink, #16171a); outline-offset: 3px; border-radius: 1px; }"
+    },
+    {
+      "name": "Arrow Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "The secondary action: a 500-weight text link with a caret that nudges down on hover.",
+      "html": "<a class=\"ds-link-arrow\" href=\"#\">See a record I refused to sell <svg class=\"ds-i\" viewBox=\"0 0 256 256\" aria-hidden=\"true\"><path d=\"M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z\"/></svg></a>",
+      "css": ".ds-link-arrow { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--sans, 'Bricolage Grotesque', sans-serif); font-size: 1.0625rem; font-weight: 500; color: var(--ink, #16171a); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; text-decoration-color: var(--ink-3, #6f7278); } .ds-link-arrow:hover { text-decoration-color: var(--ink, #16171a); } .ds-link-arrow .ds-i { width: 1em; height: 1em; fill: currentColor; transition: transform 180ms cubic-bezier(0.16,1,0.3,1); } .ds-link-arrow:hover .ds-i { transform: translateY(2px); } .ds-link-arrow:focus-visible { outline: 2px solid var(--ink, #16171a); outline-offset: 3px; border-radius: 1px; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Sticky 64px bar: wordmark with mono descriptor, section links that underline with a bottom border on hover, the primary button.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-wordmark\" href=\"#\">CartIntel <span>Miami med spa contacts</span></a><nav class=\"ds-nav-links\"><a href=\"#\">Email tiers</a><a href=\"#\">Proof</a><a href=\"#\">Pricing</a><a href=\"#\">FAQ</a></nav><a class=\"ds-nav-btn\" href=\"#\">Request a free sample</a></header>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 64px; padding: 0 1.5rem; background: color-mix(in srgb, var(--paper, #fbfbf9) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule, #d6d7d2); font-family: var(--sans, 'Bricolage Grotesque', sans-serif); color: var(--ink, #16171a); } .ds-wordmark { font-weight: 700; letter-spacing: -0.03em; font-size: 1.25rem; text-decoration: none; color: inherit; display: inline-flex; align-items: baseline; gap: 0.35rem; } .ds-wordmark span { font-family: var(--mono, 'Courier Prime', monospace); font-weight: 400; letter-spacing: 0; font-size: 0.8125rem; color: var(--ink-3, #6f7278); } .ds-nav-links { display: flex; gap: 2rem; } .ds-nav-links a { text-decoration: none; font-weight: 500; color: var(--ink-2, #45474c); padding: 0.25rem 0; border-bottom: 1px solid transparent; } .ds-nav-links a:hover { color: var(--ink, #16171a); border-bottom-color: var(--ink, #16171a); } .ds-nav-links a:focus-visible { outline: 2px solid var(--ink, #16171a); outline-offset: 3px; border-radius: 1px; } .ds-nav-btn { padding: 0.7rem 1rem; border: 1px solid var(--hi, #ffe45c); border-radius: 2px; background: var(--hi, #ffe45c); color: var(--hi-ink, #16171a); font-weight: 600; text-decoration: none; line-height: 1; white-space: nowrap; transition: background-color 180ms cubic-bezier(0.16,1,0.3,1), color 180ms cubic-bezier(0.16,1,0.3,1); } .ds-nav-btn:hover { background: var(--ink, #16171a); color: var(--paper, #fbfbf9); border-color: var(--ink, #16171a); }"
+    },
+    {
+      "name": "Manuscript Sheet",
+      "kind": "card",
+      "refersTo": "sheet",
+      "description": "The record as a physical page: typewritten fields, a highlighted evidence sentence with a source mark, citations, and a graphite margin note. White paper in both schemes.",
+      "html": "<figure class=\"ds-sheet-wrap\"><div class=\"ds-sheet\"><div class=\"ds-sheet-head\"><span><b>Record</b> Miami territory</span><span>Checked by A. Patel</span></div><dl class=\"ds-sheet-dl\"><dt>Business</dt><dd>Lu&#8226;&#8226;&#8226;&#8226; Aesthetics &amp; Wellness</dd><dt>Owner</dt><dd>Ma&#8226;&#8226;&#8226; Ro&#8226;&#8226;&#8226;</dd><dt>Email</dt><dd>m&#8226;&#8226;&#8226;&#8226;&#8226;@lu&#8226;&#8226;&#8226;&#8226;wellness.com</dd><dt>Tier</dt><dd><span class=\"ds-tag ds-tag-a\">Tier A</span> published next to the owner's name</dd></dl><div class=\"ds-evidence\"><span class=\"ds-faint\">Evidence of ownership</span><p>&ldquo;Lu&#8226;&#8226;&#8226;&#8226; was founded in 2019 by <span class=\"ds-hi\">Ma&#8226;&#8226;&#8226; Ro&#8226;&#8226;&#8226;, who owns and operates the practice</span> with a team of four.&rdquo;<a class=\"ds-src\" href=\"#\">1</a></p><ul class=\"ds-cite\"><li>1. About page, <a href=\"#\">lu&#8226;&#8226;&#8226;&#8226;wellness.com/about</a>, retrieved Sep 2026</li></ul></div><div class=\"ds-sheet-foot\"><span>Masked here. Unmasked in your sample.</span></div></div><figcaption class=\"ds-margin-note ds-confirmed\"><svg class=\"ds-i\" viewBox=\"0 0 256 256\" aria-hidden=\"true\"><path d=\"M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z\"/></svg><span>Confirmed. About page and state filing.</span></figcaption></figure>",
+      "css": ".ds-sheet-wrap { margin: 0; max-width: 34rem; } .ds-sheet { --paper: #fbfbf9; --paper-2: #f1f1ed; --ink: #16171a; --ink-2: #45474c; --ink-3: #6f7278; --rule: #d6d7d2; --rule-strong: #16171a; --hi: #ffe45c; --hi-ink: #16171a; --pencil: #c2312a; --graphite: #5a5d63; position: relative; background: var(--paper); border: 1px solid var(--rule); border-radius: 2px; box-shadow: 0 1px 0 rgb(22 23 26 / 0.08), 0 8px 18px -12px rgb(22 23 26 / 0.28); padding: 1.5rem; font-family: var(--mono, 'Courier Prime', monospace); font-variant-numeric: tabular-nums; font-size: 0.9375rem; line-height: 1.5; color: var(--ink); } .ds-sheet-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.35rem 1rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--rule-strong); font-size: 0.8125rem; color: var(--ink-2); } .ds-sheet-head b { color: var(--ink); font-weight: 700; } .ds-sheet-dl { display: grid; grid-template-columns: max-content 1fr; column-gap: 1.25rem; row-gap: 0.55rem; margin: 1rem 0 0; } .ds-sheet-dl dt { color: var(--ink-3); font-size: 0.8125rem; padding-top: 0.15em; } .ds-sheet-dl dd { margin: 0; overflow-wrap: anywhere; } .ds-evidence { margin-top: 1.1rem; padding-top: 1rem; border-top: 1px dashed var(--rule); } .ds-evidence p { margin: 0.4rem 0 0; line-height: 1.6; } .ds-faint { color: var(--ink-3); } .ds-hi { background-image: linear-gradient(var(--hi), var(--hi)); background-repeat: no-repeat; background-size: 100% 100%; color: var(--hi-ink); padding: 0.05em 0.15em; margin: 0 -0.15em; box-decoration-break: clone; -webkit-box-decoration-break: clone; } .ds-src { font-size: 0.72em; vertical-align: super; line-height: 0; color: var(--graphite); text-decoration: none; margin-left: 0.15em; } .ds-src:hover { color: var(--ink); } .ds-cite { list-style: none; padding: 0; margin: 0.75rem 0 0; font-size: 0.8125rem; color: var(--ink-2); } .ds-cite a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 0.18em; } .ds-sheet-foot { margin-top: 1.1rem; padding-top: 0.9rem; border-top: 1px solid var(--rule); font-size: 0.8125rem; color: var(--ink-3); display: flex; justify-content: space-between; gap: 1rem; } .ds-tag { display: inline-block; font-size: 0.75rem; padding: 0.1em 0.45em; border: 1px solid var(--ink); border-radius: 2px; line-height: 1.5; } .ds-tag-a { background: var(--hi); border-color: var(--hi); color: var(--hi-ink); } .ds-margin-note { font-family: var(--mono, 'Courier Prime', monospace); font-size: 0.8125rem; line-height: 1.45; color: var(--graphite, #5a5d63); display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 1.1rem; } .ds-margin-note .ds-i { width: 1rem; height: 1rem; margin-top: 0.1rem; fill: currentColor; flex: none; } .ds-confirmed .ds-i { color: var(--ink, #16171a); }"
+    },
+    {
+      "name": "Refused Sheet",
+      "kind": "card",
+      "refersTo": "sheet",
+      "description": "The same sheet with the head word in pencil, fields dimmed, a red strike through the whole field block, and a killed margin note.",
+      "html": "<figure class=\"ds-refused\"><div class=\"ds-sheet\"><div class=\"ds-sheet-head\"><span><b>Refused</b> Miami territory</span><span>Checked by A. Patel</span></div><dl class=\"ds-sheet-dl\"><dt>Business</dt><dd>Ra&#8226;&#8226;&#8226;&#8226;&#8226; Med Spa Brickell</dd><dt>Owner</dt><dd>Candidate: Ni&#8226;&#8226;&#8226;&#8226; Sa&#8226;&#8226;&#8226;&#8226;</dd><dt>Tier</dt><dd><span class=\"ds-tag ds-tag-kill\">not sold</span></dd></dl><div class=\"ds-evidence\"><span class=\"ds-faint\">Reason</span><p>The domain is a catch-all, so a verified mailbox proves nothing.</p></div></div><figcaption class=\"ds-margin-note ds-killed\"><svg class=\"ds-i\" viewBox=\"0 0 256 256\" aria-hidden=\"true\"><path d=\"M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z\"/></svg><span>Killed. Catch-all domain.</span></figcaption></figure>",
+      "css": ".ds-refused { margin: 0; max-width: 34rem; } .ds-refused .ds-sheet { --paper: #fbfbf9; --ink: #16171a; --ink-2: #45474c; --ink-3: #6f7278; --rule: #d6d7d2; --rule-strong: #16171a; --pencil: #c2312a; --graphite: #5a5d63; position: relative; background: var(--paper); border: 1px solid var(--rule); border-radius: 2px; box-shadow: 0 1px 0 rgb(22 23 26 / 0.08), 0 8px 18px -12px rgb(22 23 26 / 0.28); padding: 1.5rem; font-family: var(--mono, 'Courier Prime', monospace); font-size: 0.9375rem; line-height: 1.5; color: var(--ink); } .ds-refused .ds-sheet-head { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--rule-strong); font-size: 0.8125rem; color: var(--ink-2); } .ds-refused .ds-sheet-head b { color: var(--pencil); font-weight: 700; } .ds-refused .ds-sheet-dl { position: relative; color: var(--ink-2); display: grid; grid-template-columns: max-content 1fr; column-gap: 1.25rem; row-gap: 0.55rem; margin: 1rem 0 0; } .ds-refused .ds-sheet-dl::after { content: ''; position: absolute; left: -0.5rem; right: -0.5rem; top: 50%; height: 2px; background: var(--pencil); transform: rotate(-4deg); transform-origin: left center; pointer-events: none; } .ds-refused dt { color: var(--ink-3); font-size: 0.8125rem; } .ds-refused dd { margin: 0; } .ds-refused .ds-evidence { margin-top: 1.1rem; padding-top: 1rem; border-top: 1px dashed var(--rule); } .ds-refused .ds-evidence p { margin: 0.4rem 0 0; line-height: 1.6; } .ds-faint { color: var(--ink-3); } .ds-tag { display: inline-block; font-size: 0.75rem; padding: 0.1em 0.45em; border: 1px solid var(--ink); border-radius: 2px; line-height: 1.5; } .ds-tag-kill { border-color: var(--pencil); color: var(--pencil); } .ds-margin-note { font-family: var(--mono, 'Courier Prime', monospace); font-size: 0.8125rem; line-height: 1.45; display: flex; gap: 0.5rem; align-items: flex-start; margin-top: 1.1rem; } .ds-killed { color: var(--pencil, #c2312a); } .ds-margin-note .ds-i { width: 1rem; height: 1rem; margin-top: 0.1rem; fill: currentColor; flex: none; }"
+    },
+    {
+      "name": "Highlight and Strike",
+      "kind": "custom",
+      "refersTo": "tag-verified",
+      "description": "The two inline devices: a verified passage under the highlighter, and a killed passage struck with the red pencil. Hover the block to replay the one authored motion.",
+      "html": "<p class=\"ds-devices ds-sweep\">The checker marks <span class=\"ds-hi\">what was verified</span> and strikes <span class=\"ds-kill\">what was killed</span>.</p>",
+      "css": ".ds-devices { font-family: var(--sans, 'Bricolage Grotesque', sans-serif); font-size: 1.0625rem; line-height: 1.55; color: var(--ink, #16171a); margin: 0; } .ds-hi { background-image: linear-gradient(var(--hi, #ffe45c), var(--hi, #ffe45c)); background-repeat: no-repeat; background-size: 100% 100%; background-position: 0 0; color: var(--hi-ink, #16171a); padding: 0.05em 0.15em; margin: 0 -0.15em; box-decoration-break: clone; -webkit-box-decoration-break: clone; } .ds-kill { position: relative; color: var(--ink-2, #45474c); } .ds-kill::after { content: ''; position: absolute; left: -0.1em; right: -0.1em; top: 52%; height: 2px; background: var(--pencil, #c2312a); transform: rotate(-1.2deg); transform-origin: left center; } @media (prefers-reduced-motion: no-preference) { .ds-sweep .ds-hi { background-size: 0% 100%; transition: background-size 900ms cubic-bezier(0.16,1,0.3,1) 120ms; } .ds-sweep:hover .ds-hi { background-size: 100% 100%; } .ds-sweep .ds-kill::after { transform: scaleX(0) rotate(-1.2deg); transition: transform 900ms cubic-bezier(0.16,1,0.3,1) 200ms; } .ds-sweep:hover .ds-kill::after { transform: scaleX(1) rotate(-1.2deg); } }"
+    },
+    {
+      "name": "Tags",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Mono tier and refusal tags. Verified fills highlighter; killed borders in pencil. Not category chips.",
+      "html": "<span class=\"ds-tag\">Tier B</span> <span class=\"ds-tag ds-tag-a\">Tier A</span> <span class=\"ds-tag ds-tag-kill\">not sold</span>",
+      "css": ".ds-tag { display: inline-block; font-family: var(--mono, 'Courier Prime', monospace); font-size: 0.75rem; padding: 0.1em 0.45em; border: 1px solid var(--ink, #16171a); border-radius: 2px; line-height: 1.5; color: var(--ink, #16171a); } .ds-tag-a { background: var(--hi, #ffe45c); border-color: var(--hi, #ffe45c); color: var(--hi-ink, #16171a); } .ds-tag-kill { border-color: var(--pencil, #c2312a); color: var(--pencil, #c2312a); }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Paper fill, Ink 3 hairline, square corners; focus turns the border ink with a soft highlighter ring; invalid turns the border pencil with a pencil error line.",
+      "html": "<div class=\"ds-field\"><label for=\"ds-email\">Your email</label><input id=\"ds-email\" type=\"email\" placeholder=\"you@agency.com\"><span class=\"ds-help\">The sample is sent here.</span></div><div class=\"ds-field ds-invalid\"><label for=\"ds-zips\">ZIPs or area you sell into</label><textarea id=\"ds-zips\" placeholder=\"33131, 33139, Coral Gables\"></textarea><span class=\"ds-error\">Tell me which ZIPs or areas you sell into.</span></div>",
+      "css": ".ds-field { display: grid; gap: 0.4rem; margin-top: 1.25rem; font-family: var(--sans, 'Bricolage Grotesque', sans-serif); font-size: 1.0625rem; color: var(--ink, #16171a); } .ds-field label { font-weight: 500; } .ds-help { font-size: 0.875rem; color: var(--ink-3, #6f7278); } .ds-field input, .ds-field textarea { width: 100%; padding: 0.8rem 0.9rem; background: var(--paper, #fbfbf9); border: 1px solid var(--ink-3, #6f7278); border-radius: 2px; font: inherit; color: inherit; transition: border-color 180ms cubic-bezier(0.16,1,0.3,1), box-shadow 180ms cubic-bezier(0.16,1,0.3,1); } .ds-field textarea { min-height: 5.5rem; resize: vertical; font-family: var(--mono, 'Courier Prime', monospace); font-size: 0.9375rem; } .ds-field input::placeholder, .ds-field textarea::placeholder { color: var(--ink-3, #6f7278); } .ds-field input:focus, .ds-field textarea:focus { outline: none; border-color: var(--ink, #16171a); box-shadow: 0 0 0 3px var(--hi-soft, #fff4b8); } .ds-invalid input, .ds-invalid textarea { border-color: var(--pencil, #c2312a); } .ds-error { font-size: 0.875rem; color: var(--pencil, #c2312a); }"
+    },
+    {
+      "name": "Price Entry",
+      "kind": "custom",
+      "refersTo": "sheet",
+      "description": "One line of the price sheet: rule above, title, mono count, a typewriter figure (highlighted when free), and a short description. No box.",
+      "html": "<div class=\"ds-price\"><h3>Sample</h3><span class=\"ds-count\">10 records</span><span class=\"ds-amount ds-free\">Free</span><p class=\"ds-what\">Ten checked records for the ZIPs you sell into, with every field and every source.</p></div>",
+      "css": ".ds-price { display: grid; grid-template-columns: 1fr auto; gap: 0.5rem 1.5rem; padding: 1.4rem 0; border-top: 1px solid var(--rule-strong, #16171a); border-bottom: 1px solid var(--rule, #d6d7d2); align-items: baseline; max-width: 24rem; font-family: var(--sans, 'Bricolage Grotesque', sans-serif); color: var(--ink, #16171a); } .ds-price h3 { margin: 0; font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; } .ds-count { font-family: var(--mono, 'Courier Prime', monospace); font-variant-numeric: tabular-nums; color: var(--ink-2, #45474c); font-size: 0.9375rem; } .ds-amount { grid-column: 1 / -1; justify-self: start; font-family: var(--mono, 'Courier Prime', monospace); font-weight: 700; font-size: clamp(1.75rem, 3vw, 2.25rem); letter-spacing: -0.02em; line-height: 1; margin-top: 0.25rem; } .ds-free { background: var(--hi, #ffe45c); color: var(--hi-ink, #16171a); padding: 0.05em 0.25em; } .ds-what { grid-column: 1 / -1; margin: 0; color: var(--ink-2, #45474c); font-size: 1.0625rem; line-height: 1.55; max-width: 52ch; }"
+    },
+    {
+      "name": "Promise Item",
+      "kind": "custom",
+      "refersTo": "sheet",
+      "description": "A ledger row with an ink check (promised) or a pencil X (not promised), a bold ink lead, and Ink 2 detail.",
+      "html": "<ul class=\"ds-promise\"><li class=\"ds-yes\"><svg class=\"ds-i\" viewBox=\"0 0 256 256\" aria-hidden=\"true\"><path d=\"M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z\"/></svg><span><b>The evidence on every row.</b> Source link, quoted sentence, email tier, date checked.</span></li><li class=\"ds-no\"><svg class=\"ds-i\" viewBox=\"0 0 256 256\" aria-hidden=\"true\"><path d=\"M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z\"/></svg><span><b>Replies or meetings.</b> I sell checked contacts, not outcomes.</span></li></ul>",
+      "css": ".ds-promise { list-style: none; padding: 0; margin: 0; max-width: 32rem; border-top: 1px solid var(--rule-strong, #16171a); font-family: var(--sans, 'Bricolage Grotesque', sans-serif); font-size: 1.0625rem; line-height: 1.55; } .ds-promise li { padding: 0.9rem 0; border-bottom: 1px solid var(--rule, #d6d7d2); display: grid; grid-template-columns: 1.5rem 1fr; gap: 0.75rem; color: var(--ink-2, #45474c); } .ds-promise b { color: var(--ink, #16171a); font-weight: 600; } .ds-promise .ds-i { width: 1em; height: 1em; fill: currentColor; margin-top: 0.3rem; } .ds-yes .ds-i { color: var(--ink, #16171a); } .ds-no .ds-i { color: var(--pencil, #c2312a); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Copy Desk",
+    "overview": "The page is sales copy that has been fact-checked in front of the reader. Everything on it behaves the way a checker's desk does: white paper, near-black ink, a single highlighter that marks only what was verified, a red pencil that strikes only what was killed, and graphite notes hanging in the margin. The prose voice is a contemporary grotesk with optical sizing (Bricolage Grotesque); anything that is a record, a figure, a label or a citation is typewritten (Courier Prime). The manuscript sheet is the one object with material presence; everything else is ink on the page, separated by hairline rules and white space rather than boxes.\n\nDensity is editorial, not dashboard. Sections are long-measure prose and ledgers, each opened by a hairline rule and a headline, with content held to reading widths (64ch prose, 36ch lede, 20ch headlines). The world refuses the category default (blue hero, three feature cards, a logo strip) and refuses decoration in general: no eyebrows or kickers above headings, no gradients as tone, no cards beyond the sheet, no second accent, no rounded pills, no em dashes in copy.\n\nUnder a dark scheme the desk goes dark and the ink goes light, but the manuscript sheet stays white paper: the record is a physical object that keeps its own material regardless of the room it sits in.",
+    "keyCharacteristics": [
+      "White ground and near-black ink; one highlighter yellow; one red pencil; graphite for annotations.",
+      "Two faces with fixed jobs: grotesk for the page voice, typewriter mono for records, figures, labels and citations.",
+      "Hairline rules and white space do the separating; the manuscript sheet is the only bordered, shadowed container.",
+      "Square geometry everywhere (2px radius); 1px rules; a stronger ink rule opens each ledger.",
+      "One authored motion: the highlight sweeps in once and the pencil strike draws once when the record enters view.",
+      "Browser chrome carries the world too: selection is highlighter, focus is an ink outline, the scrollbar is square ink-3 on paper-2."
+    ],
+    "rules": [
+      { "name": "The One Highlighter Rule", "body": "Yellow appears only on a verified passage or on the single call to action. If a new element wants yellow, it must be one of those two things; otherwise it is ink.", "section": "colors" },
+      { "name": "The Red Pencil Rule", "body": "Red is never decorative and never an action. It marks something killed, refused, invalid or pending a decision, and it always sits with the thing it marks (a strike, a tag, an X, a border, an underline).", "section": "colors" },
+      { "name": "The White Paper Rule", "body": "The manuscript sheet is white paper in both schemes. Do not theme the sheet dark.", "section": "colors" },
+      { "name": "The Two Hands Rule", "body": "If it is the seller talking, it is the grotesk. If it is a record, a number, a label or a citation, it is the typewriter. Never set a heading in mono; never set a record field in the grotesk.", "section": "typography" },
+      { "name": "The No Eyebrow Rule", "body": "Headings stand alone. No small caps, no uppercase kicker, no tracked label above an h1 or h2. The only small mono text near a heading is a sheet head inside a sheet, which is a document header, not an eyebrow.", "section": "typography" },
+      { "name": "The One Object Rule", "body": "Only the manuscript sheet has a shadow. New containers get a rule or nothing.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do confine yellow to verified passages and the single \"Request a free sample\" action; everything else is ink.",
+      "Do set every record, figure, label, tag, citation and date in Courier Prime with tabular numerals, and every heading and sentence of prose in Bricolage Grotesque.",
+      "Do separate sections and rows with 1px rule lines and open each ledger with a rule-strong line; use white space, not boxes.",
+      "Do keep every corner at 2px and every border at 1px (1.5px only for the checklist box).",
+      "Do hold prose to 64ch, ledes to 36ch, headlines to 20 to 22ch, and secondary paragraphs to 40 to 60ch.",
+      "Do keep the manuscript sheet white paper under the dark scheme by re-scoping the light tokens inside .sheet.",
+      "Do mark anything killed, refused, invalid or undecided with the red pencil sitting on the thing itself (strike, tag, X, border, dashed underline).",
+      "Do honor reduced motion by rendering highlights and strikes at their final state with no sweep."
+    ],
+    "donts": [
+      "Don't add a kicker, eyebrow, small-caps or uppercase tracked label above any heading.",
+      "Don't create cards. The sheet is the only bordered, shadowed container; new content goes in ledger rows on rules.",
+      "Don't use gradients as tone or decoration; the only linear-gradient in the system is the highlighter's flat single-color fill, which exists so the mark can sweep.",
+      "Don't introduce a second accent, a blue link color, or a green success color; confirmation is an ink check mark.",
+      "Don't round anything past 2px or draw pills.",
+      "Don't use em dashes in copy; the voice uses periods, commas and colons.",
+      "Don't put a shadow on the nav, buttons, inputs or any new element.",
+      "Don't use icon-only buttons or glyph fonts; icons are inline SVG beside text.",
+      "Don't letter-space or uppercase the mono face; it is a typewriter, not a label system."
+    ]
+  }
+}

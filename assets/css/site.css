@@ -484,6 +484,7 @@ body[data-preview="true"] .synthetic-label { display: inline-block; }
   --paper: #fbfbf9; --paper-2: #f1f1ed; --ink: #16171a; --ink-2: #45474c; --ink-3: #6f7278;
   --rule: #d6d7d2; --rule-strong: #16171a; --hi: #ffe45c; --hi-soft: #fff4b8; --hi-ink: #16171a;
   --pencil: #c2312a; --graphite: #5a5d63;
+  box-shadow: 0 1px 0 rgb(0 0 0 / 0.6), 0 10px 24px -12px rgb(0 0 0 / 0.9);
 }
 
 /* Refused record: the pencil goes through the whole field block, not one line. */
