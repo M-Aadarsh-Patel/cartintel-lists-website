@@ -4,15 +4,12 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var hasIO = "IntersectionObserver" in window;
 
-  /* ---- One rule for every animation: an element waits until its own top reaches the 50% line
-     of the viewport, where the eye is, then plays once. Rows are observed individually, so a
-     ledger does not fire as a block. A passive, frame-throttled fallback covers frames where
-     observers misfire, and anything already scrolled past completes instantly. ---- */
-  var ROW = ".tier, .checklist li, .promise li, .price, .fields > div, .ask-list li, .moves > div, .howto li, .faq details, .compare-item";
-  var rows = Array.prototype.slice.call(document.querySelectorAll(ROW));
-  rows.forEach(function (el) { el.classList.add("row-anim"); });
-  var pending = Array.prototype.slice.call(document.querySelectorAll(".reveal, .section > .wrap > h2, .statement, .sweep, .row-anim, [data-typewriter]"));
-  pending = pending.filter(function (el, i) { return pending.indexOf(el) === i; });
+  /* ---- Content is always visible. The authored animations (.sweep: highlights, strikes, ticks,
+     stamps, ruled blanks; and the hero typewriter) wait until their own row's top reaches the
+     50% line of the viewport, where the eye is, then play once. A passive, frame-throttled
+     fallback covers frames where observers misfire; anything already scrolled past completes
+     instantly. ---- */
+  var pending = Array.prototype.slice.call(document.querySelectorAll(".sweep, [data-typewriter]"));
   function show(el) {
     el.classList.add("in-view");
     el.querySelectorAll(".pencil-strike path").forEach(function (p) { p.style.strokeDashoffset = "0"; });

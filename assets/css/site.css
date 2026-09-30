@@ -443,8 +443,7 @@ body[data-preview="true"] .synthetic-label { display: inline-block; }
 
 /* ---------- Reveal ---------- */
 @media (prefers-reduced-motion: no-preference) {
-  html.js .reveal { opacity: 0; transform: translateY(10px); transition: opacity 320ms var(--ease-out), transform 320ms var(--ease-out); }
-  html.js .reveal.in-view { opacity: 1; transform: none; }
+  /* Content never hides. Only strokes wait for the line (see the motion layer). */
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -495,8 +494,6 @@ body[data-preview="true"] .synthetic-label { display: inline-block; }
   .enter-sheet { opacity: 0; transform: translateY(10px) scale(0.985); animation: settle 900ms var(--ease-out) forwards; animation-delay: 220ms; }
   @keyframes rise { to { opacity: 1; transform: none; } }
   @keyframes settle { to { opacity: 1; transform: none; } }
-  /* The sheet's reveal class must not fight the entrance animation. */
-  .enter-sheet.reveal { transition: none; }
 }
 
 /* Typewriter: fields are typed in, the caret is a block of ink. */
@@ -532,12 +529,9 @@ html.js .sweep.in-view svg.draw, html.js .typed svg.draw, html.js .is-sent svg.d
 .fields > div:nth-child(6), .faq details:nth-child(6) { --i: 5; }
 .faq details:nth-child(n+7) { --i: 5; }
 @media (prefers-reduced-motion: no-preference) {
-  /* Rows animate on their own crossing of the line; no list-index stagger, the scroll provides it. */
-  html.js .row-anim { opacity: 0; transform: translateY(10px); transition: opacity 320ms var(--ease-out), transform 320ms var(--ease-out); }
-  html.js .row-anim.in-view { opacity: 1; transform: none; }
+
   /* Headings come into focus rather than sliding. Blur is bounded to the heading box. */
-  html.js .section > .wrap > h2, html.js .statement { opacity: 0; transform: translateY(10px); transition: opacity 320ms var(--ease-out), transform 320ms var(--ease-out); }
-  html.js .section > .wrap > h2.in-view, html.js .statement.in-view, html.js .in-view .statement { opacity: 1; transform: none; }
+
 }
 
 /* Highlighter hover on primary buttons: ink fills from the left, like a pen stroke. */
