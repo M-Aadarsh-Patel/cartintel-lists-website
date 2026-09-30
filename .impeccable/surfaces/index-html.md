@@ -25,7 +25,9 @@ FIRST VIEWPORT: Desktop 1440: a 64px rule-bottomed nav (wordmark, three anchors,
 
 FORM: Newsroom fact-check manuscript, position 7 of 7 on the ordered grounded list (after spreadsheet, disclosure panel, public-record printout, auditor working papers, affidavit, maps listing). Seed key 8323d474, degraded roll (no challengers, no quality-bar boards). Build path: code-led, no image generation detected, not recorded.
 
-Signature interaction: the highlight over the evidence sentence sweeps in once as the record enters view, and the red strike draws once across the refused record; both are the page's single authored motion, honoring reduced motion.
+Signature interaction (revised Sep 30 2026, owner asked for more motion): the hero record is produced in front of the reader. Copy rises in order, the sheet settles, the fields are typed in with an ink caret, the highlighter sweeps the evidence sentence, and the check mark draws itself in the margin note. Supporting motion explains state in the same grammar: checklist boxes tick in sequence, the two pencil strikes and the Free highlight draw once in view, ledger rows arrive staggered, headings come into focus, primary buttons fill with ink from the left on hover, the nav condenses after scroll, FAQ answers unfold, and the submit button acknowledges with a drawn check. All one-shot, observer-driven, collapsed under reduced motion.
+
+Removed by the owner (Sep 30 2026): the ZIP territory section and the "who checks the records" block with its portrait. The sample request stands as its own section.
 
 Honest risk: white plus yellow plus black can read as caution tape if the yellow is overused; the yellow is confined to verified passages and the one action.
 

@@ -22,8 +22,6 @@
   Decisions and placeholders in this file, searchable by data-decision value:
     brand        Working name "CartIntel" and the domain cartintel.co used in every email address.
     address      Postal address in the footer. Must match the outreach emails.
-    based        Where the seller is based (person section).
-    portrait     Real photo of the seller.
     records      The worked record, the three tier examples and the refused record are ILLUSTRATIVE and masked.
                  Replace each with a real masked row before launch.
     tier-c       Tier C counted as a full record only when the owner is named and proven.
@@ -33,7 +31,6 @@
     delivery     CSV by email; sample within 2 business days; paid orders within 5 business days.
     payment      Skydo payment link by email; card or bank transfer; files sent after payment clears.
     removal      remove@cartintel.co and the suppression list.
-    zips         The ZIP list is a working Miami-Dade list to confirm.
 -->
 <body data-preview="true">
 <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
@@ -42,6 +39,7 @@
   <symbol id="i-arrow-right" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></symbol>
   <symbol id="i-arrow-up-right" viewBox="0 0 256 256"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></symbol>
   <symbol id="i-caret-down" viewBox="0 0 256 256"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></symbol>
+  <symbol id="i-check-draw" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="square" stroke-linejoin="miter"/></symbol>
   <symbol id="i-minus" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"/></symbol>
 </svg>
 
@@ -68,16 +66,16 @@
 <section class="hero" id="top">
   <div class="wrap grid grid-7-5">
     <div>
-      <h1>Owner contacts, with the proof attached.</h1>
-      <p class="lede">Every Miami med spa record names the owner, shows the sentence proving it, and labels the email. Ten rows free.</p>
-      <div class="hero-actions">
+      <h1 class="enter">Owner contacts, with the proof attached.</h1>
+      <p class="lede enter">Every Miami med spa record names the owner, shows the sentence proving it, and labels the email. Ten rows free.</p>
+      <div class="hero-actions enter">
         <a class="btn btn-primary btn-lg" href="#sample">Request a free sample <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
         <a class="link-arrow" href="#refused">See a record I refused to sell <svg class="i" aria-hidden="true"><use href="#i-caret-down"/></svg></a>
       </div>
-      <p class="hero-note">For agencies that sell to med spas in Miami, Florida. No other territory yet. Data is non-exclusive.</p>
+      <p class="hero-note enter">For agencies that sell to med spas in Miami, Florida. No other territory yet. Data is non-exclusive.</p>
     </div>
 
-    <figure class="sheet-with-margin sweep reveal" id="record" aria-labelledby="record-title">
+    <figure class="sheet-with-margin sweep reveal enter-sheet" id="record" data-typewriter aria-labelledby="record-title">
       <div class="sheet">
         <div class="sheet-head">
           <span id="record-title"><b>Record</b> Miami territory</span>
@@ -105,7 +103,7 @@
         </div>
       </div>
       <figcaption class="margin-note confirmed">
-        <svg class="i" aria-hidden="true"><use href="#i-check"/></svg>
+        <svg class="i draw" aria-hidden="true"><use href="#i-check-draw"/></svg>
         <span>Confirmed. About page and state filing.</span>
       </figcaption>
     </figure>
@@ -143,7 +141,7 @@
 <section class="section" id="tiers">
   <div class="wrap">
     <h2>Every email is labeled, so you know what you are writing to</h2>
-    <div class="tiers reveal">
+    <div class="tiers reveal sweep">
       <div class="tier">
         <span class="tier-letter hi">A</span>
         <div>
@@ -201,9 +199,9 @@
         </div>
       </div>
       <ol class="checklist" aria-label="The three questions answered for every record">
-        <li><span class="box"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span><div><div class="q">Is this a real med spa, inside the territory?</div><p class="a">Not a dermatology clinic, not a salon that mentions Botox, not a spa in Fort Lauderdale.</p></div></li>
-        <li><span class="box"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span><div><div class="q">Does the evidence show this person owns it?</div><p class="a">A sentence on their own site, or their name on the state filing. A LinkedIn title alone is not enough.</p></div></li>
-        <li><span class="box"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span><div><div class="q">Is this email really theirs?</div><p class="a">Published beside their name, or built from it and verified, and labeled accordingly.</p></div></li>
+        <li><span class="box"><svg class="i draw" aria-hidden="true"><use href="#i-check-draw"/></svg></span><div><div class="q">Is this a real med spa, inside the territory?</div><p class="a">Not a dermatology clinic, not a salon that mentions Botox, not a spa in Fort Lauderdale.</p></div></li>
+        <li><span class="box"><svg class="i draw" aria-hidden="true"><use href="#i-check-draw"/></svg></span><div><div class="q">Does the evidence show this person owns it?</div><p class="a">A sentence on their own site, or their name on the state filing. A LinkedIn title alone is not enough.</p></div></li>
+        <li><span class="box"><svg class="i draw" aria-hidden="true"><use href="#i-check-draw"/></svg></span><div><div class="q">Is this email really theirs?</div><p class="a">Published beside their name, or built from it and verified, and labeled accordingly.</p></div></li>
       </ol>
     </div>
     <p class="process-foot"><span>Researched businesses are never contacted to test an email. Verification is a mailbox check, not a message.</span></p>
@@ -259,11 +257,11 @@
 <section class="section" id="pricing">
   <div class="wrap">
     <h2>What I sell, and what it costs</h2>
-    <div class="prices reveal">
+    <div class="prices reveal sweep">
       <div class="price">
         <h3>Sample</h3>
         <span class="count">10 records</span>
-        <span class="amount free">Free</span>
+        <span class="amount free hi">Free</span>
         <p class="what">Ten checked records for the ZIPs you sell into, with every field and every source. I don't ask for a card or a call.</p>
       </div>
       <div class="price">
@@ -295,10 +293,10 @@
       <div class="yes">
         <h3>Promised</h3>
         <ul>
-          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span><b>The agreed count.</b> 10, 50 or 150 records, each one passing the three questions.</span></li>
-          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span><b>The evidence on every row.</b> Source link, quoted sentence, email tier, date checked.</span></li>
-          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span><b>A 14-day correction window.</b> Report a wrong row within 14 days of delivery and it is replaced, or refunded at the per-record price. Your choice.</span></li>
-          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span><b>Freshness.</b> <span class="todo" data-decision="freshness" title="Working assumption">Every record checked within 30 days before delivery</span>, with the date in the file.</span></li>
+          <li><svg class="i draw" aria-hidden="true"><use href="#i-check-draw"/></svg><span><b>The agreed count.</b> 10, 50 or 150 records, each one passing the three questions.</span></li>
+          <li><svg class="i draw" aria-hidden="true"><use href="#i-check-draw"/></svg><span><b>The evidence on every row.</b> Source link, quoted sentence, email tier, date checked.</span></li>
+          <li><svg class="i draw" aria-hidden="true"><use href="#i-check-draw"/></svg><span><b>A 14-day correction window.</b> Report a wrong row within 14 days of delivery and it is replaced, or refunded at the per-record price. Your choice.</span></li>
+          <li><svg class="i draw" aria-hidden="true"><use href="#i-check-draw"/></svg><span><b>Freshness.</b> <span class="todo" data-decision="freshness" title="Working assumption">Every record checked within 30 days before delivery</span>, with the date in the file.</span></li>
         </ul>
       </div>
       <div class="no">
@@ -315,42 +313,22 @@
   </div>
 </section>
 
-<!-- 9. Territory -->
-<section class="section" id="territory">
-  <div class="wrap">
-    <h2>Territory: Miami, by ZIP code</h2>
-    <div class="zips reveal todo" data-decision="zips" title="Working list, to confirm">
-      <div><h3>Downtown, Brickell, Edgewater</h3><ul><li>33128</li><li>33130</li><li>33131</li><li>33132</li><li>33137</li></ul></div>
-      <div><h3>Miami Beach, North Beach</h3><ul><li>33139</li><li>33140</li><li>33141</li><li>33154</li></ul></div>
-      <div><h3>Coral Gables, Coconut Grove</h3><ul><li>33133</li><li>33134</li><li>33143</li><li>33146</li></ul></div>
-      <div><h3>Wynwood, Design District, Little Havana</h3><ul><li>33125</li><li>33127</li><li>33135</li><li>33136</li></ul></div>
-      <div><h3>Aventura, Sunny Isles, North Miami</h3><ul><li>33160</li><li>33161</li><li>33162</li><li>33180</li><li>33181</li></ul></div>
-      <div><h3>Doral, Blue Lagoon</h3><ul><li>33122</li><li>33126</li><li>33166</li><li>33172</li><li>33178</li></ul></div>
-      <div><h3>Kendall, Pinecrest, Palmetto Bay</h3><ul><li>33156</li><li>33157</li><li>33173</li><li>33176</li><li>33183</li></ul></div>
-      <div><h3>Key Biscayne</h3><ul><li>33149</li></ul></div>
-      <div><h3>South Miami, Westchester</h3><ul><li>33144</li><li>33145</li><li>33155</li><li>33165</li></ul></div>
-    </div>
-    <p class="zips-note">Miami med spas only, for now. If your ZIPs aren't here, ask anyway; I'll tell you honestly whether I can cover them, and when.</p>
-  </div>
-</section>
 
-<!-- 10. Who's behind it, and the sample request -->
+<!-- 9. The sample request -->
 <section class="section" id="sample">
   <div class="wrap">
-    <h2>Who checks the records</h2>
-    <div class="person">
+    <h2>Request your free sample</h2>
+    <div class="ask grid grid-5-7">
       <div class="reveal">
-        <div class="portrait todo" data-decision="portrait" role="img" aria-label="Photo of Aadarsh Patel, to be added"><span>Photo of Aadarsh Patel<br>to be added</span></div>
-        <div class="prose">
-          <p>I'm Aadarsh Patel. I research and check every record myself, and my name is on every file I send. I'm based in <span class="todo" data-decision="based" title="To confirm">[city, state]</span>, and I work only on Miami med spas until the data for one territory is right.</p>
-          <p>If you want to check who I am before sending anything, email me and ask.</p>
-        </div>
-        <p class="contact-line"><a href="mailto:hello@cartintel.co" class="todo" data-decision="brand" title="Domain to confirm">hello@cartintel.co</a></p>
+        <p class="lede">Four things, and ten checked records for your territory come back by email. Every field, every source, every label.</p>
+        <ul class="ask-list">
+          <li><svg class="i draw" aria-hidden="true"><use href="#i-check-draw"/></svg><span>Read the evidence before you decide anything.</span></li>
+          <li><svg class="i draw" aria-hidden="true"><use href="#i-check-draw"/></svg><span>See the tier mix for your ZIPs before you pay.</span></li>
+          <li><svg class="i draw" aria-hidden="true"><use href="#i-check-draw"/></svg><span>No card, no call, no follow-up sequence.</span></li>
+        </ul>
       </div>
-
       <form class="form reveal" id="sample-form" novalidate>
-        <h3>Request your free sample</h3>
-        <p>Four things, and I'll send ten checked records for your territory. The form opens an email in your mail app; nothing is stored here.</p>
+        <p>The form opens an email in your mail app with the four things filled in. Nothing is stored on this page.</p>
         <div class="row">
           <div class="field">
             <label for="f-name">Your name</label>
@@ -372,12 +350,12 @@
         <div class="field">
           <label for="f-zips">ZIPs or area you sell into</label>
           <textarea id="f-zips" name="zips" required placeholder="33131, 33139, Coral Gables"></textarea>
-          <span class="help">ZIP codes, neighborhoods, or both. The list above shows what's covered.</span>
+          <span class="help">ZIP codes, neighborhoods, or both. Miami only for now.</span>
           <span class="error" id="f-zips-err">Tell me which ZIPs or areas you sell into.</span>
         </div>
         <div class="form-actions">
-          <button class="btn btn-primary btn-lg" type="submit">Request a free sample <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
-          <span class="alt">or email the same four things to <a href="mailto:hello@cartintel.co">hello@cartintel.co</a></span>
+          <button class="btn btn-primary btn-lg" type="submit"><span class="btn-label">Request a free sample</span> <svg class="i i-arrow" aria-hidden="true"><use href="#i-arrow-right"/></svg><svg class="i i-done" aria-hidden="true"><use href="#i-check-draw"/></svg></button>
+          <span class="alt">or email the same four things to <a href="mailto:hello@cartintel.co" class="todo" data-decision="brand">hello@cartintel.co</a></span>
         </div>
         <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
       </form>

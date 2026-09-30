@@ -47,8 +47,8 @@ Open decisions the owner must settle before launch (working assumptions used on 
 - Delivery. Working assumption: CSV by email; sample within 2 business days, paid orders within 5 business days.
 - Payment flow. Working assumption: a Skydo payment link by email, paid by card or bank transfer; files sent after payment clears.
 - Removal process. Working assumption: an email address on the seller's domain; the seller maintains the suppression list.
-- Postal address: not yet supplied.
-- Exact Miami ZIP list: the page carries a working list of Miami-Dade ZIPs to be confirmed.
+- Postal address: not yet supplied (footer placeholder).
+- Exact Miami ZIP list: not published on the page by the owner's decision (Sep 30 2026); the sample request asks for the buyer's ZIPs instead. Still to be settled for delivery.
 - Optional extras (territory exclusivity option, monthly new-filings feed): kept off the page.
 
 ## Brand Commitments
@@ -62,7 +62,7 @@ Open decisions the owner must settle before launch (working assumptions used on 
 - The written content brief (Website Content Brief, Sep 30 2026) is the only source material.
 - No real checked record has been supplied yet. The page's worked sample record, the three tier examples and the rejected record are illustrative and masked, labeled as such in the source, and must be replaced with real masked rows before launch.
 - No measured statistics, no testimonials, no customer names exist. Future work must not fabricate any of these.
-- No portrait photo of the seller has been supplied.
+- No portrait photo of the seller has been supplied. The "who checks the records" block was removed from the page by the owner's decision (Sep 30 2026); the seller's name remains in the footer, the record sheets and the FAQ.
 
 ## Product Principles
 

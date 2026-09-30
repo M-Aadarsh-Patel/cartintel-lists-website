@@ -376,22 +376,7 @@ body[data-preview="true"] .synthetic-label { display: inline-block; }
 .promise .yes li .i { color: var(--ink); }
 .promise-note { margin-top: 1.5rem; color: var(--ink-2); max-width: 60ch; text-wrap: pretty; }
 
-/* ---------- ZIP territory ---------- */
-.zips { display: grid; gap: 1.5rem 2.5rem; }
-@media (min-width: 720px) { .zips { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1000px) { .zips { grid-template-columns: repeat(3, 1fr); } }
-.zips h3 { font-size: 1rem; margin-bottom: 0.5rem; }
-.zips ul { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.zips li { font-family: var(--mono); font-size: 0.9375rem; padding: 0.2em 0.5em; border: 1px solid var(--rule); border-radius: 2px; background: var(--paper); }
-.zips-note { margin-top: 2rem; color: var(--ink-2); max-width: 60ch; }
-
-/* ---------- Person + sample form ---------- */
-.person { display: grid; gap: 2rem; }
-@media (min-width: 900px) { .person { grid-template-columns: 5fr 7fr; gap: 4rem; } }
-.portrait { aspect-ratio: 4 / 5; max-width: 320px; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 2px; display: grid; place-items: center; font-family: var(--mono); font-size: 0.8125rem; color: var(--ink-3); text-align: center; padding: 1rem; }
-.person .prose { margin-top: 1.5rem; }
-.contact-line { margin-top: 1.25rem; font-family: var(--mono); font-size: 0.9375rem; }
-.contact-line a { text-decoration-color: var(--ink-3); }
+/* ---------- Sample form ---------- */
 
 .form { border-top: 1px solid var(--rule-strong); padding-top: 1.5rem; }
 .form h3 { margin-bottom: 0.5rem; }
@@ -499,6 +484,96 @@ body[data-preview="true"] .synthetic-label { display: inline-block; }
 }
 .section-note { margin-top: 1.5rem; max-width: 56ch; color: var(--ink-2); text-wrap: pretty; }
 .howto-wrap { margin-top: 1rem; }
-.portrait { color: var(--ink-2); }
 .i-sm { width: 0.85em; height: 0.85em; }
 .sprite { position: absolute; }
+
+/* ======================================================================
+   Motion layer. One grammar: the checker's desk. Things get typed,
+   highlighted, ticked and struck, once, as they come into view.
+   ====================================================================== */
+
+/* Hero entrance on load: copy rises in order, the sheet settles into place. */
+@media (prefers-reduced-motion: no-preference) {
+  .enter { opacity: 0; transform: translateY(14px); animation: rise 760ms var(--ease-out) forwards; animation-delay: calc(var(--d, 0) * 110ms + 60ms); }
+  .enter-sheet { opacity: 0; transform: translateY(10px) scale(0.985); animation: settle 900ms var(--ease-out) forwards; animation-delay: 220ms; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  @keyframes settle { to { opacity: 1; transform: none; } }
+  /* The sheet's reveal class must not fight the entrance animation. */
+  .enter-sheet.reveal { transition: none; }
+}
+
+/* Typewriter: fields are typed in, the caret is a block of ink. */
+[data-typewriter] dd.typing::after { content: ""; display: inline-block; width: 0.55em; height: 1em; background: var(--ink); vertical-align: -0.15em; margin-left: 1px; animation: caret 900ms steps(2, jump-none) infinite; }
+@keyframes caret { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: no-preference) {
+  [data-typewriter] .evidence, [data-typewriter] .sheet-foot { opacity: 0; transition: opacity 500ms var(--ease-out); }
+  [data-typewriter].typed .evidence, [data-typewriter].typed .sheet-foot { opacity: 1; }
+  [data-typewriter] .sweep .hi, [data-typewriter] .hi { transition-delay: 380ms; }
+  [data-typewriter] .margin-note { opacity: 0; transform: translateX(-6px); transition: opacity 500ms var(--ease-out) 900ms, transform 500ms var(--ease-out) 900ms; }
+  [data-typewriter].typed .margin-note { opacity: 1; transform: none; }
+}
+
+/* Drawn check marks: stroke-dasharray is inherited, so the <use>d path draws itself. */
+svg.draw { stroke-dasharray: 26; stroke-dashoffset: 26; }
+.in-view svg.draw, .typed svg.draw, .is-sent svg.draw { stroke-dashoffset: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  svg.draw { transition: stroke-dashoffset 520ms var(--ease-out); transition-delay: calc(var(--i, 0) * 260ms + 220ms); }
+  [data-typewriter] .margin-note svg.draw { transition-delay: 1150ms; }
+}
+@media (prefers-reduced-motion: reduce) { svg.draw { stroke-dashoffset: 0; } }
+.margin-note svg.draw, .promise svg.draw, .ask-list svg.draw { width: 1.05rem; height: 1.05rem; stroke-width: 2.25; }
+.checklist .box svg.draw { width: 1rem; height: 1rem; }
+
+/* Staggered arrival for lists that appear as lists; capped at eight rows. */
+.tier, .checklist li, .promise li, .price, .fields > div, .faq details, .ask-list li, .moves > div, .howto li { --i: 0; }
+.tier:nth-child(2), .checklist li:nth-child(2), .promise li:nth-child(2), .price:nth-child(2), .fields > div:nth-child(2), .faq details:nth-child(2), .ask-list li:nth-child(2), .moves > div:nth-child(2), .howto li:nth-child(2) { --i: 1; }
+.tier:nth-child(3), .checklist li:nth-child(3), .promise li:nth-child(3), .price:nth-child(3), .fields > div:nth-child(3), .faq details:nth-child(3), .ask-list li:nth-child(3), .moves > div:nth-child(3), .howto li:nth-child(3) { --i: 2; }
+.tier:nth-child(4), .promise li:nth-child(4), .fields > div:nth-child(4), .faq details:nth-child(4) { --i: 3; }
+.fields > div:nth-child(5), .faq details:nth-child(5) { --i: 4; }
+.fields > div:nth-child(6), .faq details:nth-child(6) { --i: 5; }
+@media (prefers-reduced-motion: no-preference) {
+  .reveal .tier, .reveal .checklist li, .reveal .promise li, .reveal .price, .reveal .fields > div, .reveal.fields > div, .reveal .ask-list li, .reveal .moves > div, .reveal .howto li, .reveal details {
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 620ms var(--ease-out), transform 620ms var(--ease-out);
+    transition-delay: calc(var(--i, 0) * 70ms + 80ms);
+  }
+  .reveal.in-view .tier, .reveal.in-view .checklist li, .reveal.in-view .promise li, .reveal.in-view .price, .reveal.in-view .fields > div, .reveal.fields.in-view > div, .reveal.in-view .ask-list li, .reveal.in-view .moves > div, .reveal.in-view .howto li, .reveal.in-view details { opacity: 1; transform: none; }
+  /* Headings come into focus rather than sliding. Blur is bounded to the heading box. */
+  .section > .wrap > h2, .statement { opacity: 0; filter: blur(6px); transform: translateY(6px); transition: opacity 700ms var(--ease-out), filter 700ms var(--ease-out), transform 700ms var(--ease-out); }
+  .section > .wrap > h2.in-view, .statement.in-view, .in-view .statement { opacity: 1; filter: blur(0); transform: none; }
+}
+
+/* Highlighter hover on primary buttons: ink fills from the left, like a pen stroke. */
+.btn-primary {
+  background-image: linear-gradient(var(--ink), var(--ink)); background-repeat: no-repeat; background-size: 0% 100%; background-position: left center;
+  transition: background-size 320ms var(--ease-out), color 200ms var(--ease-out), transform var(--t-fast) var(--ease-out), border-color 200ms var(--ease-out);
+}
+.btn-primary:hover, .btn-primary:focus-visible { background-size: 100% 100%; color: var(--paper); border-color: var(--ink); }
+.btn .i-done { display: none; }
+.btn.is-sent .i-arrow { display: none; }
+.btn.is-sent .i-done { display: block; }
+.btn.is-sent { background-color: var(--ink); background-size: 100% 100%; color: var(--paper); border-color: var(--ink); }
+
+/* Nav condenses once the page has scrolled. */
+.nav { transition: box-shadow 260ms var(--ease-out), border-color 260ms var(--ease-out); }
+.nav.scrolled { box-shadow: 0 10px 24px -18px rgb(22 23 26 / 0.35); }
+.nav-sentinel { position: absolute; top: 0; left: 0; width: 1px; height: 12px; pointer-events: none; }
+
+/* FAQ answers unfold. */
+@media (prefers-reduced-motion: no-preference) {
+  .faq details[open] .answer { animation: unfold 300ms var(--ease-out); }
+  @keyframes unfold { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+}
+
+/* Form acknowledgment. */
+.form-status.show { animation: unfold 320ms var(--ease-out); }
+.field.invalid input, .field.invalid textarea { box-shadow: 0 0 0 3px var(--pencil-soft); }
+.field .error { transition: opacity 200ms var(--ease-out); }
+
+/* Ask section. */
+.ask-list { margin-top: 1.5rem; display: grid; gap: 0.75rem; }
+.ask-list li { display: grid; grid-template-columns: 1.5rem 1fr; gap: 0.6rem; color: var(--ink-2); align-items: start; }
+.ask-list svg { margin-top: 0.25rem; color: var(--ink); }
+.ask .form { border-top: none; padding-top: 0; }
+@media (max-width: 899px) { .ask .form { border-top: 1px solid var(--rule-strong); padding-top: 1.5rem; } }
+.hero h1.enter { --d: 0; } .hero .lede.enter { --d: 1; } .hero-actions.enter { --d: 2; } .hero-note.enter { --d: 3; }
