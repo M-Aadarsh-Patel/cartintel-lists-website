@@ -11,7 +11,27 @@
      leave content hidden. Anything at or above the fold is shown; nothing is ever
      left blank behind a heading. ---- */
   var pending = Array.prototype.slice.call(document.querySelectorAll(".reveal, .sweep, .section > .wrap > h2, .statement"));
-  function show(el) { el.classList.add("in-view"); }
+  function show(el) {
+    el.classList.add("in-view");
+    el.querySelectorAll(".pencil-strike path").forEach(function (p) { p.style.strokeDashoffset = "0"; });
+  }
+  /* Pencil strikes: build a slightly wavering path across the block in pixel space, so the dash
+     math is exact on every browser; the percentage <line> in the markup is the no-JS fallback. */
+  document.querySelectorAll(".pencil-strike").forEach(function (svg) {
+    var line = svg.querySelector("line"); if (line) line.remove();
+    var p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    p.setAttribute("fill", "none"); p.setAttribute("stroke", "currentColor"); p.setAttribute("stroke-width", "2.4"); p.setAttribute("stroke-linecap", "round");
+    svg.appendChild(p);
+    function draw() {
+      var w = svg.clientWidth, h = svg.clientHeight; if (!w || !h) return;
+      var y0 = h * 0.84, y1 = h * 0.16, dip = h * 0.07;
+      p.setAttribute("d", "M0 " + y0.toFixed(1) + " C " + (w * 0.3).toFixed(1) + " " + (y0 - dip).toFixed(1) + ", " + (w * 0.62).toFixed(1) + " " + (y1 + dip * 1.6).toFixed(1) + ", " + w + " " + y1.toFixed(1));
+      var L = p.getTotalLength(); p.style.strokeDasharray = L; 
+      if (!(reduce || svg.closest(".in-view"))) p.style.strokeDashoffset = L; else p.style.strokeDashoffset = "0";
+    }
+    draw();
+    if ("ResizeObserver" in window) new ResizeObserver(draw).observe(svg);
+  });
   if (reduce || !hasIO) {
     pending.forEach(show); pending = [];
   } else {
@@ -82,20 +102,22 @@
           sheet.removeAttribute("aria-busy"); sheet.classList.add("typed");
         }
         var started = false;
+        var MS_PER_CHAR = 2.4, FIELD_GAP = 20;
         function typeField(i) {
           if (i >= plan.length) { finishAll(); return; }
-          var p = plan[i], n = 0, len = p.text.length;
+          var p = plan[i], len = p.text.length, t0 = null;
           p.twin.classList.add("typing");
-          (function tick() {
-            n = Math.min(len, n + 1);
+          (function frame(ts) {
+            if (t0 === null) t0 = ts;
+            var n = Math.min(len, Math.floor((ts - t0) / MS_PER_CHAR));
             p.twin.textContent = p.text.slice(0, n);
-            if (n < len) { setTimeout(tick, 6); return; }
+            if (n < len) { window.requestAnimationFrame(frame); return; }
             p.twin.remove(); p.src.classList.remove("visually-hidden");
-            setTimeout(function () { typeField(i + 1); }, 45);
-          })();
+            setTimeout(function () { typeField(i + 1); }, FIELD_GAP);
+          })(performance.now());
         }
         var startIO = new IntersectionObserver(function (entries) {
-          if (entries[0].isIntersecting && !started) { started = true; startIO.disconnect(); sheet.setAttribute("aria-busy", "true"); setTimeout(function () { typeField(0); }, 350); }
+          if (entries[0].isIntersecting && !started) { started = true; startIO.disconnect(); sheet.setAttribute("aria-busy", "true"); setTimeout(function () { typeField(0); }, 150); }
         }, { threshold: 0.35 });
         startIO.observe(sheet);
         /* If the reader never looks at it, finish anyway so nothing stays hidden. */

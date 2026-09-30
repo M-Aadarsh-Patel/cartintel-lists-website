@@ -505,9 +505,9 @@ body[data-preview="true"] .synthetic-label { display: inline-block; }
   html.js [data-typewriter] .evidence, html.js [data-typewriter] .sheet-foot { opacity: 0; transition: opacity 500ms var(--ease-out); }
   html.js [data-typewriter].typed .evidence, html.js [data-typewriter].typed .sheet-foot { opacity: 1; }
   /* The sweep is keyed to the end of typing, so it is seen. */
-  html.js [data-typewriter] .hi { background-size: 0% 100%; transition: background-size var(--t-slow) var(--ease-out) 380ms; }
+  html.js [data-typewriter] .hi { background-size: 0% 100%; transition: background-size 700ms var(--ease-out) 160ms; }
   html.js [data-typewriter].typed .hi { background-size: 100% 100%; }
-  html.js [data-typewriter] .margin-note { opacity: 0; transform: translateX(-6px); transition: opacity 500ms var(--ease-out) 900ms, transform 500ms var(--ease-out) 900ms; }
+  html.js [data-typewriter] .margin-note { opacity: 0; transform: translateX(-6px); transition: opacity 400ms var(--ease-out) 600ms, transform 400ms var(--ease-out) 600ms; }
   html.js [data-typewriter].typed .margin-note { opacity: 1; transform: none; }
 }
 
@@ -516,7 +516,7 @@ html.js svg.draw { stroke-dasharray: 26; stroke-dashoffset: 26; }
 html.js .in-view svg.draw, html.js .typed svg.draw, html.js .is-sent svg.draw { stroke-dashoffset: 0; }
 @media (prefers-reduced-motion: no-preference) {
   html.js svg.draw { transition: stroke-dashoffset 480ms var(--ease-out); transition-delay: calc(var(--i, 0) * 180ms + 160ms); }
-  [data-typewriter] .margin-note svg.draw { transition-delay: 1150ms; }
+  [data-typewriter] .margin-note svg.draw { transition-delay: 800ms; }
 }
 @media (prefers-reduced-motion: reduce) { svg.draw { stroke-dashoffset: 0; } }
 .margin-note svg.draw, .promise svg.draw, .ask-list svg.draw { width: 1.05rem; height: 1.05rem; stroke-width: 2.25; }
@@ -635,19 +635,24 @@ html.js .in-view svg.draw-x, html.js .typed svg.draw-x { stroke-dashoffset: 0; }
 /* Pencil line through the refused record: a slight curve, drawn left to right, then the stamp lands. */
 .refused .sheet .struck { position: relative; }
 .pencil-strike { position: absolute; left: -0.6rem; right: -0.6rem; top: 0; height: 100%; width: calc(100% + 1.2rem); color: var(--pencil); pointer-events: none; opacity: 0.92; }
-.pencil-strike line { stroke-dasharray: 100; stroke-dashoffset: 0; }
-html.js .refused.sweep .pencil-strike line { stroke-dashoffset: 100; }
-html.js .refused.sweep.in-view .pencil-strike line { stroke-dashoffset: 0; }
+.pencil-strike line { stroke-dasharray: none; }
 @media (prefers-reduced-motion: no-preference) {
-  html.js .refused.sweep .pencil-strike line { transition: stroke-dashoffset 720ms cubic-bezier(0.3, 0, 0.2, 1) 240ms; }
+  html.js .pencil-strike path { transition: stroke-dashoffset 560ms cubic-bezier(0.3, 0, 0.2, 1) 180ms; }
   /* The stamp: lands after the line, from slightly large to true size. */
-  html.js .sweep .tag-kill { opacity: 0; transform: scale(1.18); }
-  html.js .sweep.in-view .tag-kill { opacity: 1; transform: none; transition: opacity 220ms var(--ease-out), transform 260ms cubic-bezier(0.2, 0.9, 0.3, 1.2); transition-delay: 1000ms; }
-  html.js .tiers.sweep.in-view .tag-kill { transition-delay: 1150ms; }
+  html.js .sweep .tag-kill, html.js .sweep .tag-stamp { opacity: 0; }
+  html.js .sweep.in-view .tag-kill, html.js .sweep.in-view .tag-stamp { animation: stamp 460ms cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: 760ms; }
+  html.js .tiers.sweep.in-view .tag-kill { animation-delay: 950ms; }
+  html.js .compare.sweep.in-view .tag-stamp { animation-delay: 700ms; }
+  @keyframes stamp {
+    0%   { opacity: 0; transform: scale(1.7) rotate(-9deg); }
+    45%  { opacity: 1; transform: scale(0.94) rotate(-3deg); }
+    70%  { transform: scale(1.04) rotate(-3deg); }
+    100% { opacity: 1; transform: scale(1) rotate(-3deg); }
+  }
   /* Inline kill: a pencil stroke with a soft end, not a laser. */
   .kill::after { border-radius: 1px; height: 2.2px; }
 }
-@media (prefers-reduced-motion: reduce) { .pencil-strike line { stroke-dashoffset: 0; } .tag-kill { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .pencil-strike path { stroke-dashoffset: 0 !important; } .tag-kill, .tag-stamp { opacity: 1; animation: none; } }
 
 /* Blank fields in the cheap row: the dashed rule is drawn in, then reads as missing. */
 .sheet dd.blank { border-bottom: none; background-image: repeating-linear-gradient(90deg, var(--pencil) 0 4px, transparent 4px 8px); background-repeat: no-repeat; background-position: left bottom; background-size: 100% 1px; }
@@ -665,8 +670,8 @@ html.js .refused.sweep.in-view .pencil-strike line { stroke-dashoffset: 0; }
 /* Source marks appear once the highlight has landed. */
 @media (prefers-reduced-motion: no-preference) {
   html.js [data-typewriter] .src, html.js [data-typewriter] .cite { opacity: 0; transition: opacity 400ms var(--ease-out); }
-  html.js [data-typewriter].typed .src { opacity: 1; transition-delay: 1150ms; }
-  html.js [data-typewriter].typed .cite { opacity: 1; transition-delay: 1300ms; }
+  html.js [data-typewriter].typed .src { opacity: 1; transition-delay: 800ms; }
+  html.js [data-typewriter].typed .cite { opacity: 1; transition-delay: 950ms; }
 }
 @media (prefers-reduced-motion: reduce) { [data-typewriter] .src, [data-typewriter] .cite { opacity: 1; } }
 
@@ -679,3 +684,7 @@ html.js .refused.sweep.in-view .pencil-strike line { stroke-dashoffset: 0; }
 .field:focus-within label { color: var(--ink); }
 .faq summary:hover .i { transform: translateY(2px); }
 .faq details[open] summary:hover .i { transform: rotate(180deg) translateY(2px); }
+
+/* Stamps sit slightly askew once they have landed, like ink from a hand stamp. */
+.tag-kill, .tag-stamp { display: inline-block; transform: rotate(-3deg); transform-origin: center; }
+@media (prefers-reduced-motion: reduce) { .tag-kill, .tag-stamp { transform: rotate(-3deg); } }
