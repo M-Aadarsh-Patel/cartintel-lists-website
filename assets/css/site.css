@@ -686,3 +686,17 @@ html.js .sweep.in-view svg.draw-x, html.js .typed svg.draw-x { stroke-dashoffset
 /* Stamps sit slightly askew once they have landed, like ink from a hand stamp. */
 .tag-kill, .tag-stamp { display: inline-block; transform: rotate(-3deg); transform-origin: center; }
 @media (prefers-reduced-motion: reduce) { .tag-kill, .tag-stamp { transform: rotate(-3deg); } }
+
+/* Tick spark: a highlighter ring flares out as the check lands, so the mark registers. */
+.tick { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+.tick::after { content: ""; position: absolute; left: 50%; top: 50%; width: 1.4em; height: 1.4em; margin: -0.7em 0 0 -0.7em; border-radius: 50%; box-shadow: 0 0 0 0 var(--hi); opacity: 0; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js .sweep.in-view .tick::after, html.js .row-anim.in-view .tick::after { animation: spark 560ms var(--ease-out) 520ms both; }
+  html.js [data-typewriter].typed .tick::after { animation: spark 560ms var(--ease-out) 1900ms both; }
+  html.js .btn.is-sent .tick::after { animation: spark 560ms var(--ease-out) 120ms both; }
+  @keyframes spark {
+    0%   { opacity: 0.95; box-shadow: 0 0 0 0 var(--hi); }
+    100% { opacity: 0; box-shadow: 0 0 0 0.55em rgb(255 228 92 / 0); }
+  }
+}
+.checklist .box .tick { width: 100%; height: 100%; }

@@ -11,12 +11,17 @@
   var ROW = ".tier, .checklist li, .promise li, .price, .fields > div, .ask-list li, .moves > div, .howto li, .faq details, .compare-item";
   var rows = Array.prototype.slice.call(document.querySelectorAll(ROW));
   rows.forEach(function (el) { el.classList.add("row-anim"); });
-  var pending = Array.prototype.slice.call(document.querySelectorAll(".reveal, .section > .wrap > h2, .statement, .sweep, .row-anim"));
+  var pending = Array.prototype.slice.call(document.querySelectorAll(".reveal, .section > .wrap > h2, .statement, .sweep, .row-anim, [data-typewriter]"));
   pending = pending.filter(function (el, i) { return pending.indexOf(el) === i; });
   function show(el) {
     el.classList.add("in-view");
     el.querySelectorAll(".pencil-strike path").forEach(function (p) { p.style.strokeDashoffset = "0"; });
+    if (el.hasAttribute("data-typewriter") && el.__typeStart) el.__typeStart();
   }
+  /* Wrap every drawn check so a highlighter ring can flare when the stroke lands. */
+  document.querySelectorAll("svg.draw").forEach(function (svg) {
+    var w = document.createElement("span"); w.className = "tick"; svg.parentNode.insertBefore(w, svg); w.appendChild(svg);
+  });
   var LINE = 0.5;
   if (reduce || !hasIO) {
     pending.forEach(show); pending = [];
@@ -119,12 +124,13 @@
             setTimeout(function () { typeField(i + 1); }, FIELD_GAP);
           })(performance.now());
         }
-        var startIO = new IntersectionObserver(function (entries) {
-          if (entries[0].isIntersecting && !started) { started = true; startIO.disconnect(); sheet.setAttribute("aria-busy", "true"); setTimeout(function () { typeField(0); }, 150); }
-        }, { rootMargin: "0px 0px -50% 0px", threshold: 0 });
-        startIO.observe(sheet);
-        /* If the reader never looks at it, finish anyway so nothing stays hidden. */
-        setTimeout(function () { if (!started) { started = true; startIO.disconnect(); finishAll(); } }, 6000);
+        sheet.__typeStart = function () {
+          if (started) return; started = true;
+          /* Already scrolled past (anchor jump, back navigation): complete instantly, no show for nobody. */
+          if (sheet.getBoundingClientRect().bottom < 0) { finishAll(); return; }
+          sheet.setAttribute("aria-busy", "true"); setTimeout(function () { typeField(0); }, 150);
+        };
+        if (sheet.classList.contains("in-view")) sheet.__typeStart();
       });
     }
   }
