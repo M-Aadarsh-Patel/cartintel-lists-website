@@ -687,16 +687,19 @@ html.js .sweep.in-view svg.draw-x, html.js .typed svg.draw-x { stroke-dashoffset
 .tag-kill, .tag-stamp { display: inline-block; transform: rotate(-3deg); transform-origin: center; }
 @media (prefers-reduced-motion: reduce) { .tag-kill, .tag-stamp { transform: rotate(-3deg); } }
 
-/* Tick spark: a highlighter ring flares out as the check lands, so the mark registers. */
-.tick { position: relative; display: inline-flex; align-items: center; justify-content: center; }
-.tick::after { content: ""; position: absolute; left: 50%; top: 50%; width: 1.4em; height: 1.4em; margin: -0.7em 0 0 -0.7em; border-radius: 50%; box-shadow: 0 0 0 0 var(--hi); opacity: 0; pointer-events: none; }
+/* Tick spark: a highlighter dab swells behind the check as the stroke lands, so the mark registers. */
+.tick { position: relative; display: inline-flex; align-items: center; justify-content: center; isolation: isolate; }
+.tick > svg { position: relative; z-index: 1; }
+.tick::after { content: ""; position: absolute; left: 50%; top: 50%; width: 1.5em; height: 1.5em; margin: -0.75em 0 0 -0.75em; border-radius: 50%; background: var(--hi); opacity: 0; transform: scale(0.4); pointer-events: none; z-index: 0; }
 @media (prefers-reduced-motion: no-preference) {
-  html.js .sweep.in-view .tick::after, html.js .row-anim.in-view .tick::after { animation: spark 560ms var(--ease-out) 520ms both; }
-  html.js [data-typewriter].typed .tick::after { animation: spark 560ms var(--ease-out) 1900ms both; }
-  html.js .btn.is-sent .tick::after { animation: spark 560ms var(--ease-out) 120ms both; }
+  html.js .sweep.in-view .tick::after, html.js .row-anim.in-view .tick::after { animation: spark 720ms cubic-bezier(0.2, 0.7, 0.3, 1) 480ms both; }
+  html.js [data-typewriter].typed .tick::after { animation: spark 720ms cubic-bezier(0.2, 0.7, 0.3, 1) 1850ms both; }
+  html.js .btn.is-sent .tick::after { animation: spark 720ms cubic-bezier(0.2, 0.7, 0.3, 1) 100ms both; }
   @keyframes spark {
-    0%   { opacity: 0.95; box-shadow: 0 0 0 0 var(--hi); }
-    100% { opacity: 0; box-shadow: 0 0 0 0.55em rgb(255 228 92 / 0); }
+    0%   { opacity: 0; transform: scale(0.4); }
+    18%  { opacity: 0.95; transform: scale(0.8); }
+    100% { opacity: 0; transform: scale(1.9); }
   }
 }
 .checklist .box .tick { width: 100%; height: 100%; }
+.checklist .box .tick::after { width: 1.3em; height: 1.3em; margin: -0.65em 0 0 -0.65em; }
