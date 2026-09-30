@@ -4,17 +4,59 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var hasIO = "IntersectionObserver" in window;
 
-  /* ---- Reveal on entry: sections, ledgers, headings. One-shot.
-     Primary: an IntersectionObserver that fires a quarter viewport ahead of the fold.
-     Fallback: a passive, rAF-throttled check of the still-pending elements, because
-     observers inside embedded frames and fast flick-scrolling on phones can both
-     leave content hidden. Anything at or above the fold is shown; nothing is ever
-     left blank behind a heading. ---- */
-  var pending = Array.prototype.slice.call(document.querySelectorAll(".reveal, .sweep, .section > .wrap > h2, .statement"));
+  /* ---- Reveal on entry: content is shown a quarter viewport ahead of the fold so nothing is
+     ever blank behind a heading. Strokes (.sweep: highlights, strikes, ticks, stamps) are
+     different: they are the page's authored moments and fire only once their own element is
+     inside the viewport, otherwise they play out of sight and the reader never sees them.
+     Both have a passive, rAF-throttled fallback for frames where observers misfire. ---- */
+  var pendingReveal = Array.prototype.slice.call(document.querySelectorAll(".reveal, .section > .wrap > h2, .statement"));
+  var pendingStroke = Array.prototype.slice.call(document.querySelectorAll(".sweep"));
   function show(el) {
     el.classList.add("in-view");
     el.querySelectorAll(".pencil-strike path").forEach(function (p) { p.style.strokeDashoffset = "0"; });
   }
+  if (reduce || !hasIO) {
+    pendingReveal.forEach(show); pendingStroke.forEach(show); pendingReveal = []; pendingStroke = [];
+  } else {
+    var ioReveal = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); ioReveal.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px 25% 0px", threshold: 0 });
+    pendingReveal.forEach(function (el) { ioReveal.observe(el); });
+    var ioStroke = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); ioStroke.unobserve(e.target); } });
+    }, { rootMargin: "-12% 0px -12% 0px", threshold: 0 });
+    pendingStroke.forEach(function (el) { ioStroke.observe(el); });
+    var ticking = false;
+    function sweepPending() {
+      ticking = false;
+      var vh = window.innerHeight;
+      if (pendingReveal.length) {
+        pendingReveal = pendingReveal.filter(function (el) {
+          if (el.classList.contains("in-view")) return false;
+          if (el.getBoundingClientRect().top < vh * 1.25) { show(el); ioReveal.unobserve(el); return false; }
+          return true;
+        });
+      }
+      if (pendingStroke.length) {
+        pendingStroke = pendingStroke.filter(function (el) {
+          if (el.classList.contains("in-view")) return false;
+          var r = el.getBoundingClientRect();
+          var inBand = r.top < vh * 0.88 && r.bottom > vh * 0.12;
+          var scrolledPast = r.bottom < 0;
+          if (inBand || scrolledPast) { show(el); ioStroke.unobserve(el); return false; }
+          return true;
+        });
+      }
+    }
+    function queueSweep() { if (!ticking) { ticking = true; window.requestAnimationFrame(sweepPending); } }
+    window.addEventListener("scroll", queueSweep, { passive: true });
+    window.addEventListener("resize", queueSweep, { passive: true });
+    window.addEventListener("pageshow", queueSweep);
+    window.addEventListener("hashchange", function () { setTimeout(queueSweep, 50); });
+    queueSweep();
+    setTimeout(queueSweep, 400);
+  }
+
   /* Pencil strikes: build a slightly wavering path across the block in pixel space, so the dash
      math is exact on every browser; the percentage <line> in the markup is the no-JS fallback. */
   document.querySelectorAll(".pencil-strike").forEach(function (svg) {
@@ -32,34 +74,6 @@
     draw();
     if ("ResizeObserver" in window) new ResizeObserver(draw).observe(svg);
   });
-  if (reduce || !hasIO) {
-    pending.forEach(show); pending = [];
-  } else {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
-    }, { rootMargin: "0px 0px 25% 0px", threshold: 0 });
-    pending.forEach(function (el) { io.observe(el); });
-    var ticking = false;
-    function sweepPending() {
-      ticking = false;
-      if (!pending.length) return;
-      var limit = window.innerHeight * 1.25;
-      pending = pending.filter(function (el) {
-        if (el.classList.contains("in-view")) return false;
-        var r = el.getBoundingClientRect();
-        if (r.top < limit) { show(el); io.unobserve(el); return false; } /* in view, ahead of view, or already scrolled past */
-        return true;
-      });
-    }
-    function queueSweep() { if (!ticking) { ticking = true; window.requestAnimationFrame(sweepPending); } }
-    window.addEventListener("scroll", queueSweep, { passive: true });
-    window.addEventListener("resize", queueSweep, { passive: true });
-    window.addEventListener("pageshow", queueSweep);
-    window.addEventListener("hashchange", function () { setTimeout(queueSweep, 50); });
-    queueSweep();
-    setTimeout(queueSweep, 400);
-  }
-
   /* ---- Nav condenses after the page scrolls past a sentinel. No scroll listener. ---- */
   var nav = document.querySelector(".nav");
   if (nav && hasIO) {
